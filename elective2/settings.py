@@ -54,7 +54,7 @@ ROOT_URLCONF = 'elective2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [r"C:\Users\TOSHIBA\Desktop\Dev\Python\Django\elective2\canteensystem\templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
