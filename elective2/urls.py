@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('canteensystem/', include('canteensystem.urls')),
-
+    path('', include('canteensystem.urls')),
     path('admin/', admin.site.urls),
 ]
