@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +9,11 @@
       rel="stylesheet"
     />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'img/favicon.png' %}"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <!-- Latest compiled and minified CSS -->
@@ -29,12 +34,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="style.css?" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
   </head>
-  <body style="height: auto" onload="itemFunc()">
+  <body onload="itemFunc()">
     <nav class="navbar navbar-expand-sm navbar-dark topnav sticky-top head">
       <a class="navbar-brand">
-        <img src="favicon.png" alt="logo" style="height: 40px; width: 40px" />
+        <img class="tup-icon" alt="logo" src="{% static 'img/favicon.png' %}" />
         TUPC E-Cafeteria
       </a>
       <button
@@ -48,21 +58,21 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="topnav">
           <li>
-            <button id="menu-tab" data-toggle="tooltip" title="Menu">
+            <a href="/menu" id="menu-tab" data-toggle="tooltip" title="Menu">
               <i class="fa fa-home"></i>
-            </button>
+            </a>
           </li>
           <li>
             <a
               class="active"
-              href="index.html"
+              href=""
               data-toggle="tooltip"
               title="Item management"
               ><i class="fas fa-warehouse"></i
             ></a>
           </li>
           <li>
-            <a href="inventory.html" data-toggle="tooltip" title="Inventory"
+            <a href="/inventory" data-toggle="tooltip" title="Inventory"
               ><i class="fa fa-chart-line"></i
             ></a>
           </li>
@@ -133,14 +143,19 @@
               placeholder="Enter price here"
               required
             />
-            <input data-toggle="tooltip" title="JPG, JPEG, PNG, GIF"
-            class="upload"type="file" id="myFile" accept="image/*"
-            name="filename" style="opacity: 0;"">
+            <input
+              data-toggle="tooltip"
+              title="JPG, JPEG, PNG, GIF"
+              class="upload"
+              type="file"
+              id="myFile"
+              accept="image/*"
+              name="filename"
+            />
             <label
               for="myFile"
               id="fileUpload"
               class="btn btn-primary select-image"
-              style="margin-top: -30px"
               >Select an image <i class="fa fa-upload"></i
             ></label>
             <div class="container image-preview" id="image-preview">
@@ -365,6 +380,6 @@
       <p>@ 2020 COET S-3A Students</p>
     </div>
 
-    <script src="ecafeScript.js?v=2"></script>
+    <script src="../statics/js/ecafeScript.js"></script>
   </body>
 </html>
