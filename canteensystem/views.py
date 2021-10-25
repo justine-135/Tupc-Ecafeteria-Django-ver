@@ -12,3 +12,7 @@ def menu(request):
     # render menu.html using render function
     return render(request, 'menu.html')
 
+def inventory(request):
+    # render inventory.html using render function
+    return render(request, 'inventory.html')
+
