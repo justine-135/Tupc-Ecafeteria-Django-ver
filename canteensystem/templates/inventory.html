@@ -3,6 +3,8 @@
   <head>
     <title>E-CAFETERIA</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+    {% load static %}
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
       rel="stylesheet"
@@ -30,7 +32,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="style.css?v=1" />
+    <link rel="stylesheet" href="{%  static  'css/style.css'  %}" />
   </head>
   <body
     class="inventory-background"
@@ -39,25 +41,25 @@
   >
     <nav class="navbar navbar-expand-sm navbar-dark topnav head3 sticky-top">
       <a class="navbar-brand">
-        <img src="favicon.png" class="tup-icon" alt="logo" />
+        <img src="{% static 'img/favicon.png' %}" class="tup-icon" alt="logo" />
         TUPC E-Cafeteria
       </a>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="topnav">
           <li>
-            <button id="menu-tab" data-toggle="tooltip" title="Menu">
+            <a href="/menu" id="menu-tab" data-toggle="tooltip" title="Menu">
               <i class="fa fa-home"></i>
-            </button>
+            </a>
           </li>
           <li>
-            <a href="index.html" data-toggle="tooltip" title="Item management"
+            <a href="/" data-toggle="tooltip" title="Item management"
               ><i class="fas fa-warehouse"></i
             ></a>
           </li>
           <li>
             <a
               class="active"
-              href="inventory.html"
+              href="/inventory"
               data-toggle="tooltip"
               title="Inventory"
               ><i class="fa fa-chart-line"></i
