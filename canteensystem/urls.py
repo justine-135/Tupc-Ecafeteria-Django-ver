@@ -7,5 +7,5 @@ urlpatterns = [
     # read views.py and execute menu function
     path('', views.index, name='index'),
     path('menu', views.menu, name='menu'),
-
+    path('inventory', views.inventory, name='inventory'),
 ]
