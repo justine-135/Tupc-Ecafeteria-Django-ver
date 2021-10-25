@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,7 +42,11 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{%  static  '/css/style.css'  %}"
+    />
 
     <meta
       name="google-site-verification"
@@ -60,7 +66,11 @@
         "
       >
         <a class="navbar-brand">
-          <img src="favicon.png" class="tup-icon" alt="logo" />
+          <img
+            src="{% static 'img/favicon.png' %}"
+            class="tup-icon"
+            alt="logo"
+          />
           TUPC E-Cafeteria
         </a>
         <button
