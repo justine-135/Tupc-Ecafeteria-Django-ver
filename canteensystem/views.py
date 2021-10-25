@@ -7,3 +7,8 @@ from django.http import HttpResponse
 def index(request):
     # render index.html using render function
     return render(request, 'index.html')
+
+def menu(request):
+    # render menu.html using render function
+    return render(request, 'menu.html')
+
