@@ -394,10 +394,7 @@ function itemFunc(){ //DOM for item.html
   }
   getElementCount();
 
-  let menuTab = document.getElementById('menu-tab');
-  menuTab.addEventListener("click", ()=>{// show index.html on new tab
-   window.open("");
-  })
+  
 
   let btnDel = document.getElementsByClassName('rem');
   for(let i = 0; i < btnDel.length; i++){
@@ -507,10 +504,6 @@ function formatAMPM(date) {//display minutes, seconds, AM and PM
     }
   });
     
-  let menuTab = document.getElementById('menu-tab');
-  menuTab.addEventListener("click", ()=>{// open index.html on new tab
-   window.open("");
-  })
 
   $(function () {
     $('[data-toggle="tooltip"]').tooltip({
