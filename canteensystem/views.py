@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .form import BreakfastForm
+from .models import Menus
 
 
 def index(request):
     # render index.html using render function
     form = BreakfastForm()
-    context = {'form': form}
+    datas = Menus.objects.all()
+
+    context = {'form': form, "foods": datas}
+
+ 
  
     if request.method == 'POST':
         form = BreakfastForm(request.POST, request.FILES)
