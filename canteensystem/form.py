@@ -1,2 +1,8 @@
 from django import forms
-from .models import Breakfast_table, Lunchmeal_table, Addons_table, Drinks_table
+from .models import *
+
+
+class FormMenu(forms.ModelForm):
+    class Meta:
+        model = Breakfast_table
+        fields = '__all__'
