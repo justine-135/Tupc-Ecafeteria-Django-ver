@@ -6,33 +6,15 @@ from .form import BreakfastForm
 def index(request):
     # render index.html using render function
     form = BreakfastForm()
-    # lform = LunchmealForm(request)
-    # dform = DrinksForm(request)
-    # aform = AddonsForm(request)
-    # context = {'breakfast_form': form, 'lunchmeal_form': lform,
-    #            'drinks_form': dform, 'addons_form': aform}
+    context = {'form': form}
  
     if request.method == 'POST':
-        form = BreakfastForm(request.POST)
-        print('post')
+        form = BreakfastForm(request.POST, request.FILES)
         if form.is_valid():
-            print('hi')
-
             form.save()
             return redirect('index')
-
     else:
-        print('faled')
         form = BreakfastForm()
-
-        # return redirect('index')
-    # elif lform.is_valid():
-    #     lform.save()
-    # elif dform.is_valid():
-    #     dform.save()
-    # elif aform.is_valid():
-    #     aform.save()
-    context = {'form': form}
 
     return render(request, 'index.html', context)
 
