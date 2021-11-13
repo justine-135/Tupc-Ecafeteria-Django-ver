@@ -421,9 +421,9 @@ img {
   color: #efa536;
 }
 
-.item-height {
+/* .item-height {
   height: 450px;
-}
+} */
 .left-content {
   margin-top: 21px;
   background-color: transparent;
@@ -522,7 +522,6 @@ img {
   outline: none;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .topnav li {
     float: left;
@@ -592,4 +591,18 @@ img {
 
 #fileupload {
   margin-top: -30px;
+}
+
+.menu_form > input[type="number"],
+.menu_form > input[type="text"],
+.menu_form > input[type="file"] {
+  width: 100%;
+}
+
+.menu_form {
+  display: none;
+}
+
+.bfast_form {
+  display: block;
 }
