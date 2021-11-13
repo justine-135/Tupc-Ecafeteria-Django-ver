@@ -90,9 +90,8 @@
       enctype="multipart/form-data"
       id="item-form"
       class="was-validated"
-      method="post"
+      method="POST"
     >
-      {% csrf_token %} {{form}}
       <div class="container-fluid contents">
         <div class="row">
           <div
@@ -107,7 +106,6 @@
             "
           >
             <label class="headeritem">Item Management </label>
-
             <select
               class="custom-select form-control flex-fill mb-1 w-100 select-btn"
               id="dropdown"
@@ -122,7 +120,13 @@
               </option>
               <option value="add-ons" id="Addons">Add-ons</option>
             </select>
-            <input
+            {% csrf_token %} {{form}}
+            <!-- <section class="bfast_form menu_form"></section> -->
+            <!-- <section class="lmeal_form menu_form">{{lunchmeal_form}}</section>
+            <section class="drinks_form menu_form">{{drinks_form}}</section>
+            <section class="addons_form menu_form">{{addons_form}}</section> -->
+
+            <!-- <input
               class="mb-1 form-control"
               type="text"
               id="food"
@@ -163,7 +167,7 @@
               id="fileUpload"
               class="btn btn-primary select-image"
               >Select an image <i class="fa fa-upload"></i
-            ></label>
+            ></label> -->
             <div class="container image-preview" id="image-preview">
               <img class="" id="preview-insert-img" alt="" />
             </div>
