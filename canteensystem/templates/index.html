@@ -315,7 +315,21 @@
                         <th>Price</th>
                         <th>Edit</th>
                       </thead>
-                      <tbody id="table-content-breakfast"></tbody>
+                      <tbody id="table-content-breakfast">
+                        {% for food in foods %}
+                        <tr>
+                          <td>{{ food.item_name}}</td>
+                          <td>
+                            <img
+                              src="{% static '/temp_img/{{food.item_img.url}}' %}"
+                            />
+                          </td>
+                          <td>{{ food.item_quantity }}</td>
+                          <td>{{ food.item_price }}</td>
+                          <td></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -387,7 +401,7 @@
     </form>
 
     <div class="footer2">
-      <p>@ 2020 COET S-3A Students</p>
+      <p>@ 2020 COET S-3A foods</p>
     </div>
 
     <script src="{% static 'js/ecafeScript.js' %}"></script>
