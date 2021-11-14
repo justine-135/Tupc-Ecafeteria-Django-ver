@@ -2,17 +2,14 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .form import BreakfastForm
 from .models import Menus
+from django.conf import settings
 
 
 def index(request):
     # render index.html using render function
     form = BreakfastForm()
     datas = Menus.objects.all()
-
-    context = {'form': form, "foods": datas}
-
- 
- 
+    context = {'form': form, "foods": datas, 'media_url':settings.MEDIA_URL}
     if request.method == 'POST':
         form = BreakfastForm(request.POST, request.FILES)
         if form.is_valid():
