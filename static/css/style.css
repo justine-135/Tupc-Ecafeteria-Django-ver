@@ -394,7 +394,6 @@ img {
   outline-style: none;
 }
 .image-preview {
-  margin-top: -7px;
   height: 100%;
   background-color: transparent;
   width: 100%;
@@ -605,4 +604,8 @@ img {
 
 .bfast_form {
   display: block;
+}
+
+.food-item-image {
+  max-width: 200px;
 }
