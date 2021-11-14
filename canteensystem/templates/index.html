@@ -320,9 +320,7 @@
                         <tr>
                           <td>{{ food.item_name}}</td>
                           <td>
-                            <img
-                              src="{% static '/temp_img/{{food.item_img.url}}' %}"
-                            />
+                            <img src="static/temp_img/{{ food.item_img }}" />
                           </td>
                           <td>{{ food.item_quantity }}</td>
                           <td>{{ food.item_price }}</td>
