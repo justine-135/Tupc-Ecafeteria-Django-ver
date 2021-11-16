@@ -106,7 +106,7 @@
             "
           >
             <label class="headeritem">Item Management </label>
-            <select
+            <!--<select
               class="custom-select form-control flex-fill mb-1 w-100 select-btn"
               id="dropdown"
               name="categories"
@@ -119,7 +119,7 @@
                 Beverage and Drinks
               </option>
               <option value="add-ons" id="Addons">Add-ons</option>
-            </select>
+            </select>-->
             {% csrf_token %} {{form}}
             <!-- <section class="bfast_form menu_form"></section> -->
             <!-- <section class="lmeal_form menu_form">{{lunchmeal_form}}</section>
@@ -349,7 +349,19 @@
                         <th>Price</th>
                         <th>Edit</th>
                       </thead>
-                      <tbody id="table-content-lunchmeal"></tbody>
+                      <tbody id="table-content-lunchmeal">
+                        {% for food in foods %}
+                        <tr>
+                          <td>{{ food.item_name}}</td>
+                          <td>
+                            <img class="food-item-image" src="static/temp_img/{{ food.item_img }}" />
+                          </td>
+                          <td>{{ food.item_quantity }}</td>
+                          <td>{{ food.item_price }}</td>
+                          <td></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -368,7 +380,19 @@
                         <th>Price</th>
                         <th>Edit</th>
                       </thead>
-                      <tbody id="table-content-drinks"></tbody>
+                      <tbody id="table-content-drinks">
+                        {% for food in foods %}
+                        <tr>
+                          <td>{{ food.item_name}}</td>
+                          <td>
+                            <img class="food-item-image" src="static/temp_img/{{ food.item_img }}" />
+                          </td>
+                          <td>{{ food.item_quantity }}</td>
+                          <td>{{ food.item_price }}</td>
+                          <td></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
                     </table>
                   </div>
                 </div>
@@ -387,7 +411,19 @@
                         <th>Price</th>
                         <th>Edit</th>
                       </thead>
-                      <tbody id="table-content-addons"></tbody>
+                      <tbody id="table-content-addons">
+                        {% for food in foods %}
+                        <tr>
+                          <td>{{ food.item_name}}</td>
+                          <td>
+                            <img class="food-item-image" src="static/temp_img/{{ food.item_img }}" />
+                          </td>
+                          <td>{{ food.item_quantity }}</td>
+                          <td>{{ food.item_price }}</td>
+                          <td></td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
                     </table>
                   </div>
                 </div>
