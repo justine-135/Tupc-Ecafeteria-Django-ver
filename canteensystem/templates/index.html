@@ -97,30 +97,16 @@
           <div
             class="
               col-sm-3
-              h-50
               d-flex
               flex-column
-              justify-content-center
+              justify-content-between
               item-height
               left-content
             "
           >
             <label class="headeritem">Item Management </label>
-            <!--<select
-              class="custom-select form-control flex-fill mb-1 w-100 select-btn"
-              id="dropdown"
-              name="categories"
-            >
-              <option value="breakfast" id="selectBreakfast">Breakfast</option>
-              <option value="lunchmeal" id="selectLunchmeals">
-                Lunchmeals
-              </option>
-              <option value="beverage" id="selectBeverageDrinks">
-                Beverage and Drinks
-              </option>
-              <option value="add-ons" id="Addons">Add-ons</option>
-            </select>-->
-            {% csrf_token %} {{form}}
+
+            {% csrf_token %}
             <!-- <section class="bfast_form menu_form"></section> -->
             <!-- <section class="lmeal_form menu_form">{{lunchmeal_form}}</section>
             <section class="drinks_form menu_form">{{drinks_form}}</section>
@@ -168,14 +154,17 @@
               class="btn btn-primary select-image"
               >Select an image <i class="fa fa-upload"></i
             ></label> -->
-            <div class="container image-preview" id="image-preview">
+            <div class="django-form d-flex flex-column justify-content-between">
+              {{form}}
+            </div>
+            <div class="image-preview" id="image-preview">
               <img class="" id="preview-insert-img" alt="" />
             </div>
-            <div class="group mt-1 row">
+            <div class="d-flex">
               <button
                 data-target="#confirm"
                 type="button"
-                class="btn btn-primary form-btn ml-3"
+                class="btn btn-primary w-100"
                 id="add-button"
                 data-toggle="modal"
                 title="Submit to menu"
@@ -184,7 +173,7 @@
               </button>
               <button
                 onClick="window.location.reload()"
-                class="btn btn-secondary form-btn ml-3"
+                class="btn btn-secondary w-100"
                 type="button"
                 id="clear"
                 data-toggle="tooltip"
@@ -320,7 +309,10 @@
                         <tr>
                           <td>{{ food.item_name}}</td>
                           <td>
-                            <img class="food-item-image" src="static/temp_img/{{ food.item_img }}" />
+                            <img
+                              class="food-item-image"
+                              src="static/temp_img/{{ food.item_img }}"
+                            />
                           </td>
                           <td>{{ food.item_quantity }}</td>
                           <td>{{ food.item_price }}</td>
@@ -354,7 +346,10 @@
                         <tr>
                           <td>{{ food.item_name}}</td>
                           <td>
-                            <img class="food-item-image" src="static/temp_img/{{ food.item_img }}" />
+                            <img
+                              class="food-item-image"
+                              src="static/temp_img/{{ food.item_img }}"
+                            />
                           </td>
                           <td>{{ food.item_quantity }}</td>
                           <td>{{ food.item_price }}</td>
@@ -385,7 +380,10 @@
                         <tr>
                           <td>{{ food.item_name}}</td>
                           <td>
-                            <img class="food-item-image" src="static/temp_img/{{ food.item_img }}" />
+                            <img
+                              class="food-item-image"
+                              src="static/temp_img/{{ food.item_img }}"
+                            />
                           </td>
                           <td>{{ food.item_quantity }}</td>
                           <td>{{ food.item_price }}</td>
@@ -416,7 +414,10 @@
                         <tr>
                           <td>{{ food.item_name}}</td>
                           <td>
-                            <img class="food-item-image" src="static/temp_img/{{ food.item_img }}" />
+                            <img
+                              class="food-item-image"
+                              src="static/temp_img/{{ food.item_img }}"
+                            />
                           </td>
                           <td>{{ food.item_quantity }}</td>
                           <td>{{ food.item_price }}</td>
