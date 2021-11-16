@@ -6,10 +6,15 @@ from django.conf import settings
 
 
 def index(request):
-    # render index.html using render function
     form = BreakfastForm()
     datas = Menus.objects.all()
-    context = {'form': form, "foods": datas, 'media_url':settings.MEDIA_URL}
+
+    #filter menu
+    drinks = Menus.objects.filter(item_categories="drinks")
+    addons = Menus.objects.filter(item_categories="addons")
+
+    #add filtered here
+    context = {'form': form, "foods": datas, 'drinks': drinks, 'addons': addons, 'media_url':settings.MEDIA_URL}
     if request.method == 'POST':
         form = BreakfastForm(request.POST, request.FILES)
         if form.is_valid():
@@ -18,14 +23,13 @@ def index(request):
     else:
         form = BreakfastForm()
 
+    print(addons)
     return render(request, 'index.html', context)
 
 
 def menu(request):
-    # render menu.html using render function
     return render(request, 'menu.html')
 
 
 def inventory(request):
-    # render inventory.html using render function
     return render(request, 'inventory.html')
