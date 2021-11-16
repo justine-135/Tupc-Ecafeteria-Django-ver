@@ -11,7 +11,7 @@ FOOD_CATEGORY = (
 )
 
 class Menus(models.Model):
-    item_categories = CharField(max_length=6, choices=FOOD_CATEGORY, default='breakfast')
+    item_categories = CharField(max_length=20, choices=FOOD_CATEGORY, default='breakfast')
     item_name = CharField(max_length=30, verbose_name="item_name")
     item_quantity = IntegerField(verbose_name="item_quantity")
     item_price = IntegerField(verbose_name="item_price")
