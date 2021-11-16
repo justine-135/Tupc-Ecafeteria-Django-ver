@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'canteensystem',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'elective2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\TOSHIBA\Desktop\Dev\Python\Django\elective2\canteensystem\templates"],
+        'DIRS': [r"C:\Users\louis\Documents\TUPC E-Cafe Django\Tupc-Ecafeteria-Django-ver\canteensystem\templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
