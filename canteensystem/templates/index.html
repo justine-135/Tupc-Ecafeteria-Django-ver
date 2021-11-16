@@ -376,17 +376,17 @@
                         <th>Edit</th>
                       </thead>
                       <tbody id="table-content-drinks">
-                        {% for food in foods %}
+                        {% for drink in drinks %}
                         <tr>
-                          <td>{{ food.item_name}}</td>
+                          <td>{{ drink.item_name}}</td>
                           <td>
                             <img
                               class="food-item-image"
                               src="static/temp_img/{{ food.item_img }}"
                             />
                           </td>
-                          <td>{{ food.item_quantity }}</td>
-                          <td>{{ food.item_price }}</td>
+                          <td>{{ drink.item_quantity }}</td>
+                          <td>{{ drink.item_price }}</td>
                           <td></td>
                         </tr>
                         {% endfor %}
@@ -410,17 +410,17 @@
                         <th>Edit</th>
                       </thead>
                       <tbody id="table-content-addons">
-                        {% for food in foods %}
+                        {% for addon in addons %}
                         <tr>
-                          <td>{{ food.item_name}}</td>
+                          <td>{{ addon.item_name}}</td>
                           <td>
                             <img
                               class="food-item-image"
                               src="static/temp_img/{{ food.item_img }}"
                             />
                           </td>
-                          <td>{{ food.item_quantity }}</td>
-                          <td>{{ food.item_price }}</td>
+                          <td>{{ addon.item_quantity }}</td>
+                          <td>{{ addon.item_price }}</td>
                           <td></td>
                         </tr>
                         {% endfor %}
