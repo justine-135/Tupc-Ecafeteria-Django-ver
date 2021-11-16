@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'canteensystem',
     'django_extensions',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
