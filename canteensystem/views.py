@@ -30,7 +30,12 @@ def index(request):
 
 
 def menu(request):
-    return render(request, 'menu.html')
+    drinks = Menus.objects.filter(item_categories="drinks")
+    addons = Menus.objects.filter(item_categories="addons")
+    breakfast = Menus.objects.filter(item_categories="breakfast")
+    lunchmeals = Menus.objects.filter(item_categories="lunchmeal")
+    context = {'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'media_url':settings.MEDIA_URL}
+    return render(request, 'menu.html', context)
 
 
 def inventory(request):
