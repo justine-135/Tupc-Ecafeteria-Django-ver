@@ -192,14 +192,15 @@ feel good
           data-parent="#accordion"
         >
           <div class="menu-containers row">
+            {% for breakfast in breakfast %}
             <div class="thumbnail col-6 col-sm-4 col-xl-3 mt-5">
               <img
                 class="img"
                 type="button"
-                src="static/temp_img"
-                value=""
-                value2=""
-                name=""
+                src="static/temp_img/{{ breakfast.item_img }}"
+                value={{ breakfast.item_quantity }}
+                value2={{ breakfast.item_price }}
+                name= {{ breakfast.item_name }}
                 id="dish"
               />
               <div class="caption" style="background-color: white" id="caption">
@@ -208,6 +209,7 @@ feel good
                 <h6 class="ml-1">Price</h6>
               </div>
             </div>
+            {% endfor %}
           </div>
         </div>
         <div
@@ -216,14 +218,15 @@ feel good
           data-parent="#accordion"
         >
           <div class="menu-containers row">
+            {% for lunchmeal in lunchmeals %}
             <div class="thumbnail col-6 col-sm-4 col-xl-3 mt-5">
               <img
                 class="img"
                 type="button"
-                src="static/temp_img"
-                value=""
-                value2=""
-                name=""
+                src="static/temp_img/{{ lunchmeal.item_img }}"
+                value={{ lunchmeal.item_quantity }}
+                value2={{ lunchmeal.item_price }}
+                name= {{ lunchmeal.item_name }}
                 id="dish"
               />
               <div class="caption" style="background-color: white" id="caption">
@@ -232,6 +235,7 @@ feel good
                 <h6 class="ml-1">Price</h6>
               </div>
             </div>
+            {% endfor %}
           </div>
         </div>
         <div
@@ -240,14 +244,15 @@ feel good
           data-parent="#accordion"
         >
           <div class="menu-containers row">
+            {% for drink in drinks %}
             <div class="thumbnail col-6 col-sm-4 col-xl-3 mt-5">
               <img
                 class="img"
                 type="button"
-                src="static/temp_img"
-                value=""
-                value2=""
-                name=""
+                src="static/temp_img/{{ drink.item_img }}"
+                value={{ drink.item_quantity }}
+                value2={{ drink.item_price }}
+                name= {{ drink.item_name }}
                 id="dish"
               />
               <div class="caption" style="background-color: white" id="caption">
@@ -256,18 +261,20 @@ feel good
                 <h6 class="ml-1">Price</h6>
               </div>
             </div>
+            {% endfor %}
           </div>
         </div>
         <div class="addOns collapse" id="idAddons" data-parent="#accordion">
           <div class="menu-containers row">
+            {% for addon in addons %}
             <div class="thumbnail col-6 col-sm-4 col-xl-3 mt-5">
               <img
                 class="img"
                 type="button"
-                src="static/temp_img"
-                value=""
-                value2=""
-                name=""
+                src="static/temp_img/{{ addon.item_img }}"
+                value={{ addon.item_quantity }}
+                value2={{ addon.item_price }}
+                name= {{ addon.item_name }}
                 id="dish"
               />
               <div class="caption" style="background-color: white" id="caption">
@@ -276,6 +283,7 @@ feel good
                 <h6 class="ml-1">Price</h6>
               </div>
             </div>
+            {% endfor %}
           </div>
         </div>
       </div>
