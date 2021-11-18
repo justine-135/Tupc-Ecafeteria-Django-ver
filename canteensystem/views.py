@@ -12,9 +12,11 @@ def index(request):
     #filter menu
     drinks = Menus.objects.filter(item_categories="drinks")
     addons = Menus.objects.filter(item_categories="addons")
+    breakfast = Menus.objects.filter(item_categories="breakfast")
+    lunchmeal = Menus.objects.filter(item_categories="lunchmeal")
 
     #add filtered here
-    context = {'form': form, "foods": datas, 'drinks': drinks, 'addons': addons, 'media_url':settings.MEDIA_URL}
+    context = {'form': form, "foods": datas, 'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeal': lunchmeal, 'media_url':settings.MEDIA_URL}
     if request.method == 'POST':
         form = BreakfastForm(request.POST, request.FILES)
         if form.is_valid():
