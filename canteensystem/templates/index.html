@@ -305,17 +305,17 @@
                         <th>Edit</th>
                       </thead>
                       <tbody id="table-content-breakfast">
-                        {% for food in foods %}
+                        {% for breakfast in breakfast %}
                         <tr>
-                          <td>{{ food.item_name}}</td>
+                          <td>{{ breakfast.item_name}}</td>
                           <td>
                             <img
                               class="food-item-image"
-                              src="static/temp_img/{{ food.item_img }}"
+                              src="static/temp_img/{{ breakfast.item_img }}"
                             />
                           </td>
-                          <td>{{ food.item_quantity }}</td>
-                          <td>{{ food.item_price }}</td>
+                          <td>{{ breakfast.item_quantity }}</td>
+                          <td>{{ breakfast.item_price }}</td>
                           <td></td>
                         </tr>
                         {% endfor %}
@@ -342,17 +342,17 @@
                         <th>Edit</th>
                       </thead>
                       <tbody id="table-content-lunchmeal">
-                        {% for food in foods %}
+                        {% for lunchmeal in lunchmeal %}
                         <tr>
-                          <td>{{ food.item_name}}</td>
+                          <td>{{ lunchmeal.item_name}}</td>
                           <td>
                             <img
                               class="food-item-image"
-                              src="static/temp_img/{{ food.item_img }}"
+                              src="static/temp_img/{{ lunchmeal.item_img }}"
                             />
                           </td>
-                          <td>{{ food.item_quantity }}</td>
-                          <td>{{ food.item_price }}</td>
+                          <td>{{ lunchmeal.item_quantity }}</td>
+                          <td>{{ lunchmeal.item_price }}</td>
                           <td></td>
                         </tr>
                         {% endfor %}
