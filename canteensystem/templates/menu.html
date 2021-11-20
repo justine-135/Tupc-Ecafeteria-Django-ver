@@ -116,9 +116,10 @@ feel good
     <form
       class="form1"
       id="index-form"
-      action="submitted_order.php"
       method="post"
     >
+      {% csrf_token %}
+
       <div class="d-flex justify-content-end form-width">
         <div class="row collapse col-xl-4" id="orders-section">
           <div class="column1 pl-4 col-4 col-lg-4 col-xl-3">
