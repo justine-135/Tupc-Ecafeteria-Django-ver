@@ -23,8 +23,7 @@ class Menus(models.Model):
     item_img = ImageField(max_length=100, verbose_name="item_img", blank=True)
 
 class Orders(models.Model):
-    time = DateTimeField(verbose_name='time', blank=True)
-    item = CharField(max_length=30, verbose_name="item")
-    total_purchase = IntegerField(verbose_name="total_purchase")
-    item_status = CharField(max_length=30, verbose_name="item_status")
-    cancel_order = models.CharField(max_length=30, choices = TRUE_FALSE_CHOICES)
+    time = CharField(max_length=100, verbose_name='time', blank=False)
+    item = CharField(max_length=30, verbose_name="item", blank=False)
+    total_purchase = CharField(max_length=5, verbose_name="total_purchase", blank=False)
+    item_status = CharField(max_length=30, verbose_name="item_status", blank=False)
