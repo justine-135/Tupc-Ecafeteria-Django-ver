@@ -2,7 +2,7 @@ from django import forms
 from .models import *
 
 
-class BreakfastForm(forms.ModelForm):
+class Menu(forms.ModelForm):
     class Meta:
         model = Menus
         fields = [ 'item_categories', 'item_name', 'item_price', 'item_quantity', 'item_img',]
