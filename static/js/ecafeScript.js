@@ -256,7 +256,7 @@ function itemFunc() {
   let tbodyLunchmeal = document.getElementById("table-content-lunchmeal");
   let tbodyDrinks = document.getElementById("table-content-drinks");
   let tbodyAddons = document.getElementById("table-content-addons");
-  // let submitForm = document.getElementById("item-form");
+  let submitForm = document.getElementById("item-form");
   let modal = document.getElementById("modal-body");
   let addBtn = document.getElementById("add-button");
   let preview = document.getElementById("preview-insert-img");
@@ -287,7 +287,7 @@ function itemFunc() {
     }
   });
 
-  // $("#food").keydown(function (e) {
+  // $("#id_item_name").keydown(function (e) {
   //   if (e.shiftKey || e.ctrlKey || e.altKey) {
   //     e.preventDefault();
   //   } else {
@@ -308,38 +308,38 @@ function itemFunc() {
   //   }
   // });
 
-  // foodQuantity.addEventListener("change", function (event) {
-  //   // input must be an integer
-  //   let inputQuantity = event.target;
+  foodQuantity.addEventListener("change", function (event) {
+    // input must be an integer
+    let inputQuantity = event.target;
 
-  //   if (isNaN(parseInt(inputQuantity.value)) || inputQuantity.value <= 0) {
-  //     inputQuantity.value = 1;
-  //     console.log(
-  //       "ERROR INPUT QUANTITY " + typeof parseInt(inputQuantity.value)
-  //     );
-  //   } else {
-  //     foodQuantity.value = parseInt(inputQuantity.value);
-  //   }
-  // });
+    if (isNaN(parseInt(inputQuantity.value)) || inputQuantity.value <= 0) {
+      inputQuantity.value = 1;
+      console.log(
+        "ERROR INPUT QUANTITY " + typeof parseInt(inputQuantity.value)
+      );
+    } else {
+      foodQuantity.value = parseInt(inputQuantity.value);
+    }
+  });
 
-  // foodPrice.addEventListener("change", function (event) {
-  //   // input must be integer or float
-  //   let inputPrice = event.target;
-  //   console.log(inputPrice);
-  //   if (
-  //     (isNaN(parseFloat(inputPrice.value)) &&
-  //       isNaN(parseInt(inputPrice.value))) ||
-  //     inputPrice.value <= 0
-  //   ) {
-  //     inputPrice.value = 1;
-  //     console.log("ERROR INPUT PRICE" + +typeof parseFloat(inputPrice.value));
-  //   } else if (inputPrice.value >= 1000) {
-  //     inputPrice.value = 1000;
-  //   }
+  foodPrice.addEventListener("change", function (event) {
+    // input must be integer or float
+    let inputPrice = event.target;
+    console.log(inputPrice);
+    if (
+      (isNaN(parseFloat(inputPrice.value)) &&
+        isNaN(parseInt(inputPrice.value))) ||
+      inputPrice.value <= 0
+    ) {
+      inputPrice.value = 1;
+      console.log("ERROR INPUT PRICE" + +typeof parseFloat(inputPrice.value));
+    } else if (inputPrice.value >= 1000) {
+      inputPrice.value = 1000;
+    }
 
-  //   inputPrice = Math.round(inputPrice.value * 100) / 100; // round number to the nearest 2 dec.
-  //   foodPrice.value = inputPrice;
-  // });
+    inputPrice = Math.round(inputPrice.value * 100) / 100; // round number to the nearest 2 dec.
+    foodPrice.value = inputPrice;
+  });
 
   let imgSrc = "";
 
@@ -352,78 +352,79 @@ function itemFunc() {
     }
   });
 
-  // submitForm.addEventListener("submit", function (e) {
-  //   let breakfastTbl = document.getElementById("id-table-item-breakfast")
-  //     .childNodes[3];
-  //   let lunchmealTbl = document.getElementById("id-table-item-lunchmeal")
-  //     .childNodes[3];
-  //   let drinksTbl = document.getElementById("id-table-item-drinks")
-  //     .childNodes[3];
-  //   let addonTbl = document.getElementById("id-table-item-addons")
-  //     .childNodes[3];
+  submitForm.addEventListener("submit", function (e) {
+    let breakfastTbl = document.getElementById("id-table-item-breakfast")
+      .childNodes[3];
+    let lunchmealTbl = document.getElementById("id-table-item-lunchmeal")
+      .childNodes[3];
+    let drinksTbl = document.getElementById("id-table-item-drinks")
+      .childNodes[3];
+    let addonTbl = document.getElementById("id-table-item-addons")
+      .childNodes[3];
 
-  //   console.log("ey");
-  //   if (
-  //     isNaN(parseInt(foodQuantity.value)) ||
-  //     isNaN(parseFloat(foodPrice.value)) ||
-  //     imgSrc === ""
-  //   ) {
-  //     //if input not valid, prevent submit
-  //     document.getElementById("confirmModalLabel").innerHTML =
-  //       "Double check your inputs";
-  //     console.log("ERROR: INPUT NOT VALID");
-  //     e.preventDefault();
-  //   } else {
-  //     //input is valid, submit
+    console.log("ey");
+    if (
+      isNaN(parseInt(foodQuantity.value)) ||
+      isNaN(parseFloat(foodPrice.value)) ||
+      imgSrc == "" ||
+      foodName.value == ""
+    ) {
+      //if input not valid, prevent submit
+      document.getElementById("confirmModalLabel").innerHTML =
+        "Double check your inputs";
+      console.log("ERROR: INPUT NOT VALID");
+      e.preventDefault();
+    } else {
+      //input is valid, submit
 
-  //     if (drpDown.value === "breakfast") {
-  //       // if duplicates, prevent submit
+      if (drpDown.value === "breakfast") {
+        // if duplicates, prevent submit
 
-  //       for (let i = 0; i < breakfastTbl.rows.length; i++) {
-  //         //check dupplicates
-  //         if (breakfastTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
-  //           document.getElementById("confirmModalLabel").innerHTML =
-  //             "This item is already added";
+        for (let i = 0; i < breakfastTbl.rows.length; i++) {
+          //check dupplicates
+          if (breakfastTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
+            document.getElementById("confirmModalLabel").innerHTML =
+              "This item is already added";
 
-  //           e.preventDefault();
-  //         }
-  //       }
-  //     }
-  //     if (drpDown.value === "lunchmeal") {
-  //       for (let i = 0; i < lunchmealTbl.rows.length; i++) {
-  //         //check dupplicates
-  //         if (lunchmealTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
-  //           document.getElementById("confirmModalLabel").innerHTML =
-  //             "This item is already added";
+            e.preventDefault();
+          }
+        }
+      }
+      if (drpDown.value === "lunchmeal") {
+        for (let i = 0; i < lunchmealTbl.rows.length; i++) {
+          //check dupplicates
+          if (lunchmealTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
+            document.getElementById("confirmModalLabel").innerHTML =
+              "This item is already added";
 
-  //           e.preventDefault();
-  //         }
-  //       }
-  //     }
-  //     if (drpDown.value === "beverage") {
-  //       for (let i = 0; i < drinksTbl.rows.length; i++) {
-  //         //check dupplicates
-  //         if (drinksTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
-  //           document.getElementById("confirmModalLabel").innerHTML =
-  //             "This item is already added";
+            e.preventDefault();
+          }
+        }
+      }
+      if (drpDown.value === "beverage") {
+        for (let i = 0; i < drinksTbl.rows.length; i++) {
+          //check dupplicates
+          if (drinksTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
+            document.getElementById("confirmModalLabel").innerHTML =
+              "This item is already added";
 
-  //           e.preventDefault();
-  //         }
-  //       }
-  //     }
-  //     if (drpDown.value === "add-ons") {
-  //       for (let i = 0; i < addonTbl.rows.length; i++) {
-  //         //check dupplicates
-  //         if (addonTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
-  //           document.getElementById("confirmModalLabel").innerHTML =
-  //             "This item is already added";
+            e.preventDefault();
+          }
+        }
+      }
+      if (drpDown.value === "add-ons") {
+        for (let i = 0; i < addonTbl.rows.length; i++) {
+          //check dupplicates
+          if (addonTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
+            document.getElementById("confirmModalLabel").innerHTML =
+              "This item is already added";
 
-  //           e.preventDefault();
-  //         }
-  //       }
-  //     }
-  //   }
-  // });
+            e.preventDefault();
+          }
+        }
+      }
+    }
+  });
 
   addBtn.addEventListener("click", () => {
     document.getElementById("confirmModalLabel").innerHTML = "Confirmation";
