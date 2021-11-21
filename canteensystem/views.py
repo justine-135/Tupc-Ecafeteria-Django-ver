@@ -38,9 +38,6 @@ def menu(request):
 
     
     if request.method == 'POST':
-        # sample = request.POST.get("foods")
-        # sample1 = request.POST.get("prices")
-        # sample3 = request.POST.get("quantities")
         foods = []
         prices = []
 
