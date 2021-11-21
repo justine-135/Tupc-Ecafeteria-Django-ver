@@ -132,11 +132,21 @@
           <th>Item</th>
           <th>Total purchase (P)</th>
           <th>Status</th>
-          <th>Cancel order</th>
+          <!-- <th>Cancel order</th> -->
         </tr>
       </thead>
 
-      <tbody class="tb-body" id="id-tb-body"></tbody>
+      <tbody class="tb-body" id="id-tb-body">
+        {% for order in order %}
+          <tr>
+            <td>{{ order.id}}</td>
+            <td>{{ order.time }}</td>
+            <td>{{ order.item }}</td>
+            <td>{{ order.total_purchase }}</td>
+            <td>{{ order.item_status }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
     </table>
 
     <script src="{% static 'js/ecafeScript.js' %}"></script>
