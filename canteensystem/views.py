@@ -13,6 +13,7 @@ def index(request):
     addons = Menus.objects.filter(item_categories="addons")
     breakfast = Menus.objects.filter(item_categories="breakfast")
     lunchmeal = Menus.objects.filter(item_categories="lunchmeal")
+    
 
     context = {'form': form, "foods": datas, 'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeal': lunchmeal, 'media_url':settings.MEDIA_URL}
     if request.method == 'POST':
@@ -64,4 +65,6 @@ def menu(request):
 
 
 def inventory(request):
-    return render(request, 'inventory.html')
+    order = Orders.objects.filter(item_status="SUCCESS")
+    context = {'order': order}
+    return render(request, 'inventory.html', context)
