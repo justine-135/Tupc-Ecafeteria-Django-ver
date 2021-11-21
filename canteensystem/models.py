@@ -10,17 +10,17 @@ FOOD_CATEGORY = (
     ('addons','Add-ons'),
 )
 
-TRUE_FALSE_CHOICES = (
-    (True, 'Yes'),
-    (False, 'No')
-)
+# TRUE_FALSE_CHOICES = (
+#     (True, 'Yes'),
+#     (False, 'No')
+# )
 
 class Menus(models.Model):
-    item_categories = CharField(max_length=20, choices=FOOD_CATEGORY, default='breakfast')
-    item_name = CharField(max_length=30, verbose_name="item_name")
-    item_quantity = IntegerField(verbose_name="item_quantity")
-    item_price = IntegerField(verbose_name="item_price")
-    item_img = ImageField(max_length=100, verbose_name="item_img", blank=True)
+    item_categories = CharField(max_length=20, choices=FOOD_CATEGORY, default='breakfast', blank=False)
+    item_name = CharField(max_length=30, verbose_name="item_name", blank=False)
+    item_quantity = IntegerField(verbose_name="item_quantity", blank=False)
+    item_price = IntegerField(verbose_name="item_price", blank=False)
+    item_img = ImageField(max_length=100, verbose_name="item_img", blank=False)
 
 class Orders(models.Model):
     time = CharField(max_length=100, verbose_name='time', blank=False)
