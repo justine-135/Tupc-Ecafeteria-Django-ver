@@ -155,9 +155,9 @@ function indexFunc() {
 
     let formContents = `
     <div class="row content-inside" id="${itemName}">
-      <input type="textbox" class="name-par pl-1 col-5 col-xl-4" value='${itemName}' name="foods[]" readonly>
-      <input type="number" class="pricing col-3 col-xl-3" value="${itemPrice}" name="prices[]" readonly>
-      <input class="quantity-element col-2 col-xl-3" type="number" min="1" max="${itemQuantity}" value="1" name="quantity[]">
+      <input type="textbox" class="name-par pl-1 col-5 col-xl-4" value='${itemName}' name="foods" readonly>
+      <input type="textbox" class="pricing col-3 col-xl-3" value="${itemPrice}" name="prices" readonly>
+      <input class="quantity-element col-2 col-xl-3" type="number" min="1" max="${itemQuantity}" value="1" name="quantity">
       <button class="del col-2 col-xl-1 material-icons" id="id-delete" type="button">clear</button>
     </div>
     `;
