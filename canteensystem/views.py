@@ -39,18 +39,17 @@ def menu(request):
     
     if request.method == 'POST':
         foods = []
-        prices = []
 
         for key, values in request.POST.lists():
             if key == 'foods':
                 foods.append(values)
         total = request.POST.get("total-purchase")
 
-        print(foods)
         for food in foods:
-            
             form.item = ' '.join(food)
             form.save()
+            
+        print(foods)
         form.time = request.POST.get("hour")
         form.item_status = 'SUCCESS'
         form.total_purchase = total
