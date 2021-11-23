@@ -172,7 +172,6 @@
                 <i></i> Confirm
               </button>
               <button
-                onClick="window.location.reload()"
                 class="btn btn-secondary w-100"
                 type="button"
                 id="clear"
@@ -318,7 +317,7 @@
                           <td>{{ breakfast.item_price }}</td>
                           <td class="edit-btn">
                             <a href="{% url 'update' breakfast.id %}">Edit</a>
-                            <button>Delete</button>
+                            <a href="">Delete</a>
                           </td>
                         </tr>
                         {% endfor %}
@@ -358,6 +357,7 @@
                           <td>{{ lunchmeal.item_price }}</td>
                           <td>
                             <a href="{% url 'update' lunchmeal.id %}">Edit</a>
+                            <a href="">Delete</a>
                           </td>
                         </tr>
                         {% endfor %}
@@ -394,7 +394,7 @@
                           <td>{{ drink.item_price }}</td>
                           <td>
                             <a href="{% url 'update' drink.id %}">Edit</a>
-                            <button>Delete</button>
+                            <a href="">Delete</a>
                           </td>
                       
                           
@@ -432,8 +432,8 @@
                           <td>{{ addon.item_quantity }}</td>
                           <td>{{ addon.item_price }}</td>
                           <td>
-                            <a href="{% url 'update' breakfast.id %}">Edit</a>
-                            <button>Delete</button>
+                            <a href="{% url 'update' addon.id %}">Edit</a>
+                            <a href="">Delete</a>
                           </td>
                         
                           
