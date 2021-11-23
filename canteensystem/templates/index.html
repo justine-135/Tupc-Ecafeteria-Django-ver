@@ -316,7 +316,10 @@
                           </td>
                           <td>{{ breakfast.item_quantity }}</td>
                           <td>{{ breakfast.item_price }}</td>
-                          <td></td>
+                          <td class="edit-btn">
+                            <a href="{% url 'update' breakfast.id %}">Edit</a>
+                            <button>Delete</button>
+                          </td>
                         </tr>
                         {% endfor %}
                       </tbody>
@@ -353,7 +356,9 @@
                           </td>
                           <td>{{ lunchmeal.item_quantity }}</td>
                           <td>{{ lunchmeal.item_price }}</td>
-                          <td></td>
+                          <td>
+                            <a href="{% url 'update' lunchmeal.id %}">Edit</a>
+                          </td>
                         </tr>
                         {% endfor %}
                       </tbody>
@@ -387,7 +392,12 @@
                           </td>
                           <td>{{ drink.item_quantity }}</td>
                           <td>{{ drink.item_price }}</td>
-                          <td></td>
+                          <td>
+                            <a href="{% url 'update' drink.id %}">Edit</a>
+                            <button>Delete</button>
+                          </td>
+                      
+                          
                         </tr>
                         {% endfor %}
                       </tbody>
@@ -421,7 +431,12 @@
                           </td>
                           <td>{{ addon.item_quantity }}</td>
                           <td>{{ addon.item_price }}</td>
-                          <td></td>
+                          <td>
+                            <a href="{% url 'update' breakfast.id %}">Edit</a>
+                            <button>Delete</button>
+                          </td>
+                        
+                          
                         </tr>
                         {% endfor %}
                       </tbody>
