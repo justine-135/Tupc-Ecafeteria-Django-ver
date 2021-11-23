@@ -1,0 +1,459 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>E-CAFETERIA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'img/favicon.png' %}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+  </head>
+  <body onload="itemFunc()">
+    <nav class="navbar navbar-expand-sm navbar-dark topnav sticky-top head">
+      <a class="navbar-brand">
+        <img class="tup-icon" alt="logo" src="{% static 'img/favicon.png' %}" />
+        TUPC E-Cafeteria
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="topnav">
+          <li>
+            <a
+              href="/menu"
+              id="menu-tab"
+              data-toggle="tooltip"
+              title="Menu"
+              target="_blank"
+            >
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              class="active"
+              href="/"
+              data-toggle="tooltip"
+              title="Item management"
+              ><i class="fas fa-warehouse"></i
+            ></a>
+          </li>
+          <li>
+            <a href="/inventory" data-toggle="tooltip" title="Inventory"
+              ><i class="fa fa-chart-line"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <form
+      enctype="multipart/form-data"
+      id="item-form"
+      class="was-validated"
+      method="POST"
+    >
+      <div class="container-fluid contents">
+        <div class="row">
+          <div
+            class="
+              col-sm-3
+              d-flex
+              flex-column
+              justify-content-between
+              item-height
+              left-content
+            "
+          >
+            <label class="headeritem">Item Management </label>
+
+            {% csrf_token %}
+            <!-- <section class="bfast_form menu_form"></section> -->
+            <!-- <section class="lmeal_form menu_form">{{lunchmeal_form}}</section>
+            <section class="drinks_form menu_form">{{drinks_form}}</section>
+            <section class="addons_form menu_form">{{addons_form}}</section> -->
+
+            <!-- <input
+              class="mb-1 form-control"
+              type="text"
+              id="food"
+              name="food"
+              placeholder="Enter name here"
+              required
+            />
+            <input
+              class="mb-1 form-control"
+              type="number"
+              min="1"
+              id="quantity"
+              name="quantity"
+              placeholder="Enter quantity here"
+              required
+            />
+            <input
+              class="mb-1 form-control"
+              type="number"
+              id="price"
+              min="1"
+              name="price"
+              step="any"
+              placeholder="Enter price here"
+              required
+            />
+            <input
+              data-toggle="tooltip"
+              title="JPG, JPEG, PNG, GIF"
+              class="upload"
+              type="file"
+              id="myFile"
+              accept="image/*"
+              name="filename"
+            />
+            <label
+              for="myFile"
+              id="fileUpload"
+              class="btn btn-primary select-image"
+              >Select an image <i class="fa fa-upload"></i
+            ></label> -->
+            <div class="django-form d-flex flex-column justify-content-between">
+              {{form}}
+            </div>
+            <div class="image-preview" id="image-preview">
+              <img class="" id="preview-insert-img" alt="" />
+            </div>
+            <div class="d-flex">
+              <button
+                data-target="#confirm"
+                type="button"
+                class="btn btn-primary w-100"
+                id="add-button"
+                data-toggle="modal"
+                title="Submit to menu"
+              >
+                <i></i> Confirm
+              </button>
+              <button
+                onClick="window.location.reload()"
+                class="btn btn-secondary w-100"
+                type="button"
+                id="clear"
+                data-toggle="tooltip"
+                title="Clear inputs"
+              >
+                Clear
+              </button>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="confirm"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="confirmModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="confirmModalLabel">
+                    Confirmation
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <input
+                    type="submit"
+                    value="Add item"
+                    class="btn btn-primary"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-9 item-height right-content">
+            <div class="d-flex group-btn">
+              <button
+                class="col-xl-3 nav-button"
+                type="button"
+                aria-expanded="false"
+                data-toggle="collapse"
+                data-target="#itemBreakfast"
+                id="btn-breakfast"
+              >
+                Breakfast
+                <span class="badge badge-light badge-pill" id="breakfast-count"
+                  >0</span
+                >
+              </button>
+              <button
+                class="col-xl-3 nav-button"
+                type="button"
+                aria-expanded="false"
+                data-toggle="collapse"
+                data-target="#itemLunchmeals"
+                id="btn-lunch"
+              >
+                Lunchmeals
+                <span class="badge badge-light badge-pill" id="lunchmeal-count"
+                  >0</span
+                >
+              </button>
+              <button
+                class="col-xl-3 nav-button"
+                type="button"
+                aria-expanded="false"
+                data-toggle="collapse"
+                data-target="#itemBeverageDrinks"
+                id="btn-drinks"
+              >
+                Beverage and Drinks
+                <span class="badge badge-light badge-pill" id="drinks-count"
+                  >0</span
+                >
+              </button>
+              <button
+                class="col-xl-3 nav-button"
+                type="button"
+                aria-expanded="false"
+                data-toggle="collapse"
+                data-target="#itemAddons"
+                id="btn-addons"
+              >
+                Add-ons
+                <span class="badge badge-light badge-pill" id="addons-count"
+                  >0</span
+                >
+              </button>
+            </div>
+            <div class="itemMenu container-fluid">
+              <div id="accordion">
+                <div
+                  class="container-fluid breakFast show"
+                  id="itemBreakfast"
+                  data-parent="#accordion"
+                >
+                  <h3 class="col-xl-12 titleMenu">Breakfast</h3>
+                  <div
+                    class="container-fluid d-flex flex-row"
+                    id="breakfast-menu"
+                  >
+                    <table
+                      class="table table-item"
+                      id="id-table-item-breakfast"
+                    >
+                      <thead>
+                        <th>Item</th>
+                        <th>Display</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Edit</th>
+                      </thead>
+                      <tbody id="table-content-breakfast">
+                        {% for breakfast in breakfast %}
+                        <tr>
+                          <td>{{ breakfast.item_name}}</td>
+                          <td>
+                            <img
+                              class="food-item-image"
+                              src="static/temp_img/{{ breakfast.item_img }}"
+                            />
+                          </td>
+                          <td>{{ breakfast.item_quantity }}</td>
+                          <td>{{ breakfast.item_price }}</td>
+                          <td class="edit-btn">
+                            <a href="{% url 'update' breakfast.id %}">Edit</a>
+                            <button>Delete</button>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div
+                  class="container-fluid lunchMeals collapse"
+                  id="itemLunchmeals"
+                  data-parent="#accordion"
+                >
+                  <h3 class="col-xl-12 titleMenu">Lunchmeals</h3>
+                  <div class="container-fluid d-flex flex-row" id="lunch-menu">
+                    <table
+                      class="table table-item"
+                      id="id-table-item-lunchmeal"
+                    >
+                      <thead>
+                        <th>Item</th>
+                        <th>Display</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Edit</th>
+                      </thead>
+                      <tbody id="table-content-lunchmeal">
+                        {% for lunchmeal in lunchmeals %}
+                        <tr>
+                          <td>{{ lunchmeal.item_name}}</td>
+                          <td>
+                            <img
+                              class="food-item-image"
+                              src="static/temp_img/{{ lunchmeal.item_img }}"
+                            />
+                          </td>
+                          <td>{{ lunchmeal.item_quantity }}</td>
+                          <td>{{ lunchmeal.item_price }}</td>
+                          <td>
+                            <a href="{% url 'update' lunchmeal.id %}">Edit</a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div
+                  class="container-fluid beverageDrinks collapse"
+                  id="itemBeverageDrinks"
+                  data-parent="#accordion"
+                >
+                  <h3 class="col-xl-12 titleMenu">Beverage and Drinks</h3>
+                  <div class="container-fluid d-flex flex-row" id="drinks-menu">
+                    <table class="table table-item" id="id-table-item-drinks">
+                      <thead>
+                        <th>Item</th>
+                        <th>Display</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Edit</th>
+                      </thead>
+                      <tbody id="table-content-drinks">
+                        {% for drink in drinks %}
+                        <tr>
+                          <td>{{ drink.item_name}}</td>
+                          <td>
+                            <img
+                              class="food-item-image"
+                              src="static/temp_img/{{ drink.item_img }}"
+                            />
+                          </td>
+                          <td>{{ drink.item_quantity }}</td>
+                          <td>{{ drink.item_price }}</td>
+                          <td>
+                            <a href="{% url 'update' drink.id %}">Edit</a>
+                            <button>Delete</button>
+                          </td>
+                      
+                          
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div
+                  class="container-fluid addOns collapse"
+                  id="itemAddons"
+                  data-parent="#accordion"
+                >
+                  <h3 class="col-xl-12 titleMenu">Add-ons</h3>
+                  <div class="container-fluid d-flex flex-row" id="addons-menu">
+                    <table class="table table-item" id="id-table-item-addons">
+                      <thead>
+                        <th>Item</th>
+                        <th>Display</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Edit</th>
+                      </thead>
+                      <tbody id="table-content-addons">
+                        {% for addon in addons %}
+                        <tr>
+                          <td>{{ addon.item_name}}</td>
+                          <td>
+                            <img
+                              class="food-item-image"
+                              src="static/temp_img/{{ addon.item_img }}"
+                            />
+                          </td>
+                          <td>{{ addon.item_quantity }}</td>
+                          <td>{{ addon.item_price }}</td>
+                          <td>
+                            <a href="{% url 'update' breakfast.id %}">Edit</a>
+                            <button>Delete</button>
+                          </td>
+                        
+                          
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="footer2">
+      <p>@ 2021 COET S-4A foods</p>
+    </div>
+
+    <script src="{% static 'js/ecafeScript.js' %}"></script>
+  </body>
+</html>
