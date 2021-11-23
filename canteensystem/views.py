@@ -24,9 +24,7 @@ def index(request):
     else:
         form = Menu()
 
-    print(addons)
     return render(request, 'index.html', context)
-
 
 def menu(request):
     form = Orders()
@@ -49,7 +47,6 @@ def menu(request):
             form.item = ' '.join(food)
             form.save()
             
-        print(foods)
         form.time = request.POST.get("hour")
         form.item_status = 'SUCCESS'
         form.total_purchase = total
@@ -64,3 +61,20 @@ def inventory(request):
     order = Orders.objects.filter(item_status="SUCCESS")
     context = {'order': order}
     return render(request, 'inventory.html', context)
+
+def updateFood(request, pk):
+    datas = Menus.objects.get(id=pk)
+    form = Menu(instance=datas)
+    drinks = Menus.objects.filter(item_categories="drinks")
+    addons = Menus.objects.filter(item_categories="addons")
+    breakfast = Menus.objects.filter(item_categories="breakfast")
+    lunchmeals = Menus.objects.filter(item_categories="lunchmeal")
+    if request.method == 'POST':
+        form = Menu(request.POST, request.FILES, instance=datas)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+
+    context = {'form': form, 'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'media_url':settings.MEDIA_URL}
+
+    return render(request, 'update.html', context)
