@@ -260,6 +260,16 @@ function itemFunc() {
   let modal = document.getElementById("modal-body");
   let addBtn = document.getElementById("add-button");
   let preview = document.getElementById("preview-insert-img");
+  const clearForm = document.querySelector('#clear');
+
+  clearForm.addEventListener('click', ()=>{
+    console.log('click')
+    foodName.value = '';
+    foodQuantity.value = '';
+    foodPrice.value = '';
+    imgUpload.value = '';
+    preview.src = '';
+  })
 
   drpDown.addEventListener("change", () => {
     const breakfastForm = document.querySelector(".bfast_form");
