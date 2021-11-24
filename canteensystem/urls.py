@@ -9,5 +9,6 @@ urlpatterns = [
     path('menu', views.menu, name='menu'),
     path('inventory', views.inventory, name='inventory'),
     path('/<str:pk>', views.updateFood, name='update'),
+    path('delete/<str:pk>', views.deleteFood, name='delete'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
