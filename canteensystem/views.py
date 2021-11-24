@@ -78,3 +78,13 @@ def updateFood(request, pk):
     context = {'form': form, 'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'media_url':settings.MEDIA_URL}
 
     return render(request, 'update.html', context)
+
+
+def deleteFood(request, pk):
+    datas = Menus.objects.get(id=pk)
+    if request.method == "POST":
+        datas.delete() 
+        return redirect('index')
+
+    context = {'item':datas}
+    return render(request, 'delete.html', context)
