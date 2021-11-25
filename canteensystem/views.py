@@ -58,7 +58,7 @@ def menu(request):
 
 
 def inventory(request):
-    order = Orders.objects.filter(item_status="SUCCESS")
+    order = Orders.objects.all()
     context = {'order': order}
     return render(request, 'inventory.html', context)
 
@@ -77,7 +77,7 @@ def updateFood(request, pk):
 
     context = {'form': form, 'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'media_url':settings.MEDIA_URL}
 
-    return render(request, 'update.html', context)
+    return render(request, 'update.html/', context)
 
 
 def deleteFood(request, pk):
@@ -86,5 +86,16 @@ def deleteFood(request, pk):
         datas.delete() 
         return redirect('index')
 
-    context = {'item':datas}
-    return render(request, 'delete.html', context)
+    context = {'item':datas, 'media_url':settings.MEDIA_URL}
+    return render(request, 'delete.html/', context)
+
+def cancelOrder(request, pk):
+    datas = Orders.objects.get(id=pk)
+    if request.method == "POST":
+        datas.item_status = "CANCELLED"
+        datas.save()
+        print(datas)
+        return redirect('inventory')
+    context = {'item': datas}
+
+    return render(request, 'cancel-order.html/', context)
