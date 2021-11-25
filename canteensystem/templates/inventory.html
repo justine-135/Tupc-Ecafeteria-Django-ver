@@ -132,7 +132,7 @@
           <th>Item</th>
           <th>Total purchase (P)</th>
           <th>Status</th>
-          <!-- <th>Cancel order</th> -->
+          <th>Edit</th>
         </tr>
       </thead>
 
@@ -144,6 +144,7 @@
             <td>{{ order.item }}</td>
             <td>{{ order.total_purchase }}</td>
             <td>{{ order.item_status }}</td>
+            <td><a class="change2" href="{% url 'cancel-order' order.id %}">Cancel</a></td>
           </tr>
         {% endfor %}
       </tbody>
