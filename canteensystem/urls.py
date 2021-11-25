@@ -6,9 +6,10 @@ from . import views
 urlpatterns = [
     # map views to urls
     path('', views.index, name='index'),
-    path('menu', views.menu, name='menu'),
-    path('inventory', views.inventory, name='inventory'),
-    path('/<str:pk>', views.updateFood, name='update'),
-    path('delete/<str:pk>', views.deleteFood, name='delete'),
+    path('menu/', views.menu, name='menu'),
+    path('inventory/', views.inventory, name='inventory'),
+    path('update/<str:pk>/', views.updateFood, name='update'),
+    path('delete/<str:pk>/', views.deleteFood, name='delete'),
+    path('cancel/<str:pk>/', views.cancelOrder, name='cancel-order'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
