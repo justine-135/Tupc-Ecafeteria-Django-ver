@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>E-CAFETERIA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'img/favicon.png' %}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="{% static 'css/style.css' %}"
+        />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark topnav sticky-top head">
+            <a class="navbar-brand">
+              <img class="tup-icon" alt="logo" src="{% static 'img/favicon.png' %}" />
+              TUPC E-Cafeteria
+            </a>
+          </nav>
+        <div class="delete-wrapper">
+            <main class="delete-page">
+                <p>Are you sure you want to cancel order no. {{item.id}}?</p>
+                <form class="delete-item-form" action="{% url 'cancel-order' item.id %}" method="POST">
+                    {% csrf_token %}
+                    <a href="{% url 'inventory' %}">Cancel</a>
+                    <input type="submit" name="Confirm">
+                </form>
+            </main>
+        </div>
+        <footer class="delete-footer">@ 2021 COET S-4A foods</footer>
+    </body>
+</html>
