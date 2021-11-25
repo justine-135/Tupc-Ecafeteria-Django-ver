@@ -246,6 +246,7 @@ function indexFunc() {
 
 function itemFunc() {
   //DOM for item.html
+  console.log('loadindex');
   console.log("LOADED: item.html");
   let foodName = document.querySelector('[name="item_name"]');
   let foodQuantity = document.querySelector("[name='item_quantity']");
@@ -529,17 +530,12 @@ function inventoryFunc() {
   for (let i = 0; i < banBtn.length; i++) {
     banBtn[i].addEventListener("click", (e) => {
       if (
-        banBtn[i].parentNode.parentNode.childNodes[9].textContent == "SUCCESS"
+        banBtn[i].parentNode.parentNode.childNodes[9].textContent != "SUCCESS"
       ) {
-        let yesNo = confirm(
-          'Mark this order as "CANCELLED"? This cannot be reverted.'
-        );
-        if (yesNo !== true) {
-          e.preventDefault();
-        }
-      } else {
         e.preventDefault();
+
       }
+       
     });
   }
 
