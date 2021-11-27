@@ -99,3 +99,14 @@ def cancelOrder(request, pk):
     context = {'item': datas}
 
     return render(request, 'cancel-order.html/', context)
+
+def clearInventory(request):
+    datas = Orders.objects.all()
+    if request.method == "POST":
+        datas.delete()
+        return redirect('inventory')
+
+    print(datas)
+    context = {'item':datas}
+
+    return render(request, 'clear-inventory.html', context)
