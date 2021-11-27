@@ -573,14 +573,6 @@ function inventoryFunc() {
   document.getElementById("id-time").textContent = formatAMPM(new Date()) + " ";
   document.getElementById("id-time").appendChild(createI);
 
-  clearTable.addEventListener("click", (e) => {
-    // append new table if true
-    let choose = confirm("Erase all data from the table?");
-    if (choose !== true) {
-      e.preventDefault();
-    }
-  });
-
   $(function () {
     $('[data-toggle="tooltip"]').tooltip({
       trigger: "hover",
