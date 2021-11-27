@@ -99,12 +99,12 @@
 
         <div class="activate-reset d-flex flex-column">
           <a
-            href="del_table.php"
             class="btn btn-danger mb-1"
             id="reset-btn"
             data-toggle="tooltip"
             title="Clear table"
             data-placement="left"
+            href="{% url 'clear-inventory' %}"
             ><i class="fas fa-folder-minus"></i
           ></a>
           <a
