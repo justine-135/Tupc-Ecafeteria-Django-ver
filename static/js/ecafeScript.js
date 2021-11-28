@@ -262,6 +262,8 @@ function itemFunc() {
   let addBtn = document.getElementById("add-button");
   let preview = document.getElementById("preview-insert-img");
   const clearForm = document.querySelector('#clear');
+  const djangoForm = document.querySelector('.django-form');
+
 
   clearForm.addEventListener('click', ()=>{
     console.log('click')
@@ -479,6 +481,14 @@ function itemFunc() {
       trigger: "hover",
     });
   });
+
+  preview.src = djangoForm.childNodes[15].getAttribute("href");
+  console.log(djangoForm.childNodes);
+  djangoForm.childNodes[14].textContent = '';
+  djangoForm.childNodes[15].innerHTML = '';
+  djangoForm.childNodes[16].style.display = 'none';
+  djangoForm.childNodes[17].textContent = '';
+
 }
 
 function inventoryFunc() {
