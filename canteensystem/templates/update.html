@@ -93,7 +93,7 @@
       method="POST"
     >
       <div class="container-fluid contents">
-        <div class="d-flex align-items-start">
+        <div class="row">
           <div
             class="
               col-sm-3
@@ -101,7 +101,6 @@
               flex-column
               justify-content-between
               item-height
-              item-height-update
               left-content
             "
           >
@@ -356,7 +355,7 @@
                           </td>
                           <td>{{ lunchmeal.item_quantity }}</td>
                           <td>{{ lunchmeal.item_price }}</td>
-                          <td>
+                          <td class="edit-btn">
                             <a href="{% url 'update' lunchmeal.id %}">Edit</a>
                             <a href="">Delete</a>
                           </td>
@@ -393,7 +392,7 @@
                           </td>
                           <td>{{ drink.item_quantity }}</td>
                           <td>{{ drink.item_price }}</td>
-                          <td>
+                          <td class="edit-btn">
                             <a href="{% url 'update' drink.id %}">Edit</a>
                             <a href="">Delete</a>
                           </td>
@@ -432,7 +431,7 @@
                           </td>
                           <td>{{ addon.item_quantity }}</td>
                           <td>{{ addon.item_price }}</td>
-                          <td>
+                          <td class="edit-btn">
                             <a href="{% url 'update' addon.id %}">Edit</a>
                             <a href="">Delete</a>
                           </td>
