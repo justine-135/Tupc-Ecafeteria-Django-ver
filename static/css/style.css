@@ -416,9 +416,6 @@ img {
   color: #efa536;
 }
 
-.item-height-update {
-  height: 600px;
-}
 .left-content {
   background-color: transparent;
 }
@@ -656,4 +653,12 @@ img {
 .delete-item-form input[type="submit"]{
   background-color: rgb(0, 85, 243);
 
+}
+
+.change2{
+  padding: 0.2rem;
+  background-color: rgb(255, 59, 59);
+  color: white;
+  border-radius: 5px;
+  border: none;
 }
