@@ -317,7 +317,7 @@
                           <td>{{ breakfast.item_price }}</td>
                           <td class="edit-btn">
                             <a href="{% url 'update' breakfast.id %}">Edit</a>
-                            <a href="">Delete</a>
+                            <a href="{% url 'index' %}">Cancel</a>
                           </td>
                         </tr>
                         {% endfor %}
@@ -357,7 +357,7 @@
                           <td>{{ lunchmeal.item_price }}</td>
                           <td class="edit-btn">
                             <a href="{% url 'update' lunchmeal.id %}">Edit</a>
-                            <a href="">Delete</a>
+                            <a href="{% url 'index' %}">Cancel</a>
                           </td>
                         </tr>
                         {% endfor %}
@@ -394,7 +394,7 @@
                           <td>{{ drink.item_price }}</td>
                           <td class="edit-btn">
                             <a href="{% url 'update' drink.id %}">Edit</a>
-                            <a href="">Delete</a>
+                            <a href="{% url 'index' %}">Cancel</a>
                           </td>
                       
                           
@@ -433,7 +433,7 @@
                           <td>{{ addon.item_price }}</td>
                           <td class="edit-btn">
                             <a href="{% url 'update' addon.id %}">Edit</a>
-                            <a href="">Delete</a>
+                            <a href="{% url 'index' %}">Cancel</a>
                           </td>
                         
                           
