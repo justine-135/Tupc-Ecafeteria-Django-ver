@@ -246,7 +246,7 @@ function indexFunc() {
 
 function itemFunc() {
   //DOM for item.html
-  console.log('loadindex');
+  console.log("loadindex");
   console.log("LOADED: item.html");
   let foodName = document.querySelector('[name="item_name"]');
   let foodQuantity = document.querySelector("[name='item_quantity']");
@@ -261,43 +261,20 @@ function itemFunc() {
   let modal = document.getElementById("modal-body");
   let addBtn = document.getElementById("add-button");
   let preview = document.getElementById("preview-insert-img");
-  const clearForm = document.querySelector('#clear');
-  const djangoForm = document.querySelector('.django-form');
+  const clearForm = document.querySelector("#clear");
+  const djangoForm = document.querySelector(".django-form");
 
-
-  clearForm.addEventListener('click', ()=>{
-    console.log('click')
-    foodName.value = '';
-    foodQuantity.value = '';
-    foodPrice.value = '';
-    imgUpload.value = '';
-    preview.src = '';
-  })
+  clearForm.addEventListener("click", () => {
+    console.log("click");
+    foodName.value = "";
+    foodQuantity.value = "";
+    foodPrice.value = "";
+    imgUpload.value = "";
+    preview.src = "";
+  });
 
   drpDown.addEventListener("change", () => {
-    const breakfastForm = document.querySelector(".bfast_form");
-    const lunchmealForm = document.querySelector(".lmeal_form");
-    const drinksForm = document.querySelector(".drinks_form");
-    const addonsForm = document.querySelector(".addons_form");
-
-    breakfastForm.style.display = "none";
-    lunchmealForm.style.display = "none";
-    drinksForm.style.display = "none";
-    addonsForm.style.display = "none";
     console.log(drpDown.value);
-    if (drpDown.value === "breakfast") {
-      breakfastForm.style.display = "block";
-      console.log("bselect");
-    }
-    if (drpDown.value === "lunchmeal") {
-      lunchmealForm.style.display = "block";
-    }
-    if (drpDown.value === "beverage") {
-      drinksForm.style.display = "block";
-    }
-    if (drpDown.value === "add-ons") {
-      addonsForm.style.display = "block";
-    }
   });
 
   // $("#id_item_name").keydown(function (e) {
@@ -375,7 +352,6 @@ function itemFunc() {
     let addonTbl = document.getElementById("id-table-item-addons")
       .childNodes[3];
 
-    console.log("ey");
     if (
       isNaN(parseInt(foodQuantity.value)) ||
       isNaN(parseFloat(foodPrice.value)) ||
@@ -414,7 +390,7 @@ function itemFunc() {
           }
         }
       }
-      if (drpDown.value === "beverage") {
+      if (drpDown.value === "drinks") {
         for (let i = 0; i < drinksTbl.rows.length; i++) {
           //check dupplicates
           if (drinksTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
@@ -425,7 +401,7 @@ function itemFunc() {
           }
         }
       }
-      if (drpDown.value === "add-ons") {
+      if (drpDown.value === "addons") {
         for (let i = 0; i < addonTbl.rows.length; i++) {
           //check dupplicates
           if (addonTbl.rows[i].childNodes[1].innerHTML == foodName.value) {
@@ -484,11 +460,10 @@ function itemFunc() {
 
   preview.src = djangoForm.childNodes[15].getAttribute("href");
   console.log(djangoForm.childNodes);
-  djangoForm.childNodes[14].textContent = '';
-  djangoForm.childNodes[15].innerHTML = '';
-  djangoForm.childNodes[16].style.display = 'none';
-  djangoForm.childNodes[17].textContent = '';
-
+  djangoForm.childNodes[14].textContent = "";
+  djangoForm.childNodes[15].innerHTML = "";
+  djangoForm.childNodes[16].style.display = "none";
+  djangoForm.childNodes[17].textContent = "";
 }
 
 function inventoryFunc() {
@@ -543,9 +518,7 @@ function inventoryFunc() {
         banBtn[i].parentNode.parentNode.childNodes[9].textContent != "SUCCESS"
       ) {
         e.preventDefault();
-
       }
-       
     });
   }
 
