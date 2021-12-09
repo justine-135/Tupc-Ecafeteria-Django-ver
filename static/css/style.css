@@ -375,7 +375,7 @@ h5 {
   position: relative;
   display: block;
   background-color: white;
-  height:70vh;
+  height: 70vh;
   min-height: 460px;
 }
 .form-control {
@@ -485,7 +485,7 @@ img {
   text-align: center;
 }
 
-.modal-dialog{
+.modal-dialog {
   width: 25%;
   min-width: 300px;
 }
@@ -607,29 +607,28 @@ img {
   display: none;
 }
 
-.delete-wrapper{
+.delete-wrapper {
   background-color: white;
   height: 80vh;
   padding-left: 1rem;
   padding-top: 1rem;
 }
 
-.edit-btn a{
+.edit-btn a {
   padding: 0.5rem;
   color: white;
   border-radius: 5px;
 }
 
-.edit-btn a:first-child{
+.edit-btn a:first-child {
   background-color: rgb(0, 85, 243);
-
 }
 
-.edit-btn a:last-child{
+.edit-btn a:last-child {
   background-color: rgb(255, 59, 59);
 }
 
-.delete-footer{
+.delete-footer {
   width: 100%;
   height: 8vh;
   display: flex;
@@ -638,27 +637,54 @@ img {
   color: #efa536;
 }
 
-.delete-item-form a, .delete-item-form input[type="submit"]{
+.delete-item-form a,
+.delete-item-form input[type="submit"] {
   padding: 0.5rem;
   color: white;
   border-radius: 5px;
   border: none;
 }
 
-.delete-item-form a{
+.delete-item-form a {
   background-color: rgb(255, 59, 59);
-
 }
 
-.delete-item-form input[type="submit"]{
+.delete-item-form input[type="submit"] {
   background-color: rgb(0, 85, 243);
-
 }
 
-.change2{
+.change2 {
   padding: 0.2rem;
   background-color: rgb(255, 59, 59);
   color: white;
   border-radius: 5px;
   border: none;
+}
+
+.accounts-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(#000000d5, #000000da),
+    url("../img/CANTEEN\ WALL.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.accounts-page h1 {
+  font-size: 1.5rem;
+}
+
+.accounts-form {
+  padding: 15px;
+  border-radius: 10px;
+  height: auto;
+  width: 30%;
+  background-color: white;
+}
+
+.btn-register {
+  background-color: #efa536;
+  color: white;
 }
