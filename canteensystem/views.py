@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from .form import Menu
+from .form import Menu, CreateAccount
 from .models import Menus, Orders
 from django.conf import settings
 
@@ -110,3 +109,13 @@ def clearInventory(request):
     context = {'item':datas}
 
     return render(request, 'clear-inventory.html', context)
+
+def login(request):
+    return render(request, 'accounts/login.html')
+
+def createAccount(request):
+    form = CreateAccount()
+    context = {'form': form}
+
+    return render(request, 'accounts/registration.html', context)
+
