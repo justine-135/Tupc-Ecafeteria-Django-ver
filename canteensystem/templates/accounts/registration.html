@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>E-CAFETERIA</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'img/favicon.png' %}"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+  </head>
+  <body class="accounts-page">
+    <section class="registration-form accounts-form">
+      <h1>Create an account</h1>
+      <hr />
+      <form action="" method="POST" class="d-flex flex-column">
+        {% csrf_token %}
+        <div class="name-inputs d-flex justify-content-between mb-2">
+          {{form.first_name}} {{form.last_name}}
+        </div>
+        {{form.username}} {{form.password}} {{form.password2}}
+        <button class="btn btn-register mb-2">Register</button>
+        <p class="text-center">
+          Already have an account? Login <a href="{% url 'login' %}">here</a>
+        </p>
+      </form>
+    </section>
+
+    <script>
+      const reenterpwd = document.querySelector("#id_password2");
+      reenterpwd.setAttribute("placeholder", "Re-enter password");
+      reenterpwd.setAttribute("class", "mb-2");
+    </script>
+  </body>
+</html>
