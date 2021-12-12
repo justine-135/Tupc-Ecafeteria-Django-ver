@@ -13,6 +13,7 @@ urlpatterns = [
     path('cancel/<str:pk>/', views.cancelOrder, name='cancel-order'),
     path('clear-inventory/', views.clearInventory, name='clear-inventory'),
     path('registration/', views.createAccount, name ='registration'),
-    path('login/', views.login, name ='login')
+    path('login/', views.login, name ='login'),
+    path('logout/', views.logout, name ='logout')
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
