@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate
+from django.core.checks import messages
 from django.shortcuts import render, redirect
 from .form import Menu, CreateAccount
 from .models import Menus, Orders
@@ -111,11 +113,33 @@ def clearInventory(request):
     return render(request, 'clear-inventory.html', context)
 
 def login(request):
-    return render(request, 'accounts/login.html')
+    form = login()
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None and user.is_superuser:
+            login(request, user)
+            return redirect('registration')
+        else:
+            messages.info(request, "Invalid Credentials. user Not Found")
+    
+    context = {}
+    return render(request, 'accounts/login.html', context)
 
 def createAccount(request):
     form = CreateAccount()
+    if request.method == "POST":
+        form = CreateAccount(request.POST)
+        if form.is_valid():
+            form.save
+        return redirect('login')
+
     context = {'form': form}
 
     return render(request, 'accounts/registration.html', context)
 
+def logout(request):
+    logout(request)
+    return redirect('login')
