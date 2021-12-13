@@ -46,7 +46,8 @@
       <h1>Login</h1>
       <hr />
       <form action="" method="POST" class="d-flex flex-column">
-        <input
+        {% csrf_token %}
+        <!--<input
           type="text"
           class="mb-2"
           name="username"
@@ -57,7 +58,8 @@
           class="mb-2"
           name="password"
           placeholder="Enter password"
-        />
+        /> -->
+        {{form.username}} {{form.password}}
         <button class="btn btn-register mb-2">Login</button>
         <p class="text-center">
           Don't have an account? Register
