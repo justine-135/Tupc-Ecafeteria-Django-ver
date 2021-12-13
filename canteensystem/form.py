@@ -18,11 +18,10 @@ class Menu(forms.ModelForm):
 class CreateAccount(UserCreationForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name','username', 'password', 'password2']
+        fields = ['first_name', 'last_name','username', 'password1', 'password2']
         widgets={
         'first_name': forms.TextInput(attrs={'placeholder': 'First name','class':'w-75'}),
         'last_name': forms.TextInput(attrs={'placeholder': 'Last name','class':'w-75'}),
         'username': forms.TextInput(attrs={'placeholder': 'Enter username', 'class': 'mb-2'}),
-        'password': forms.PasswordInput(attrs={'placeholder': 'Enter password', 'class': 'mb-2'}),
 
         }
