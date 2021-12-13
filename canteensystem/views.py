@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate
 from django.core.checks import messages
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .form import Menu, CreateAccount
 from .models import Menus, Orders
@@ -113,8 +114,9 @@ def clearInventory(request):
     return render(request, 'clear-inventory.html', context)
 
 def login(request):
-    form = login()
+    form = CreateAccount()
     if request.method == "POST":
+        form = CreateAccount(request.POST)
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -123,9 +125,9 @@ def login(request):
             login(request, user)
             return redirect('registration')
         else:
-            messages.info(request, "Invalid Credentials. user Not Found")
+            messages.success(request, "Invalid Credentials. user Not Found")
     
-    context = {}
+    context = {'form': form}
     return render(request, 'accounts/login.html', context)
 
 def createAccount(request):
