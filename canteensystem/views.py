@@ -1,4 +1,6 @@
-from django.contrib.auth import authenticate
+from django.conf.urls import url
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.checks import messages
 from django.contrib import messages
 from django.shortcuts import render, redirect
@@ -6,7 +8,7 @@ from .form import Menu, CreateAccount
 from .models import Menus, Orders
 from django.conf import settings
 
-
+@login_required(login_url='login')
 def index(request):
     form = Menu()
     datas = Menus.objects.all()
@@ -58,12 +60,13 @@ def menu(request):
     
     return render(request, 'menu.html', context)
 
-
+@login_required(login_url='login')
 def inventory(request):
     order = Orders.objects.all()
     context = {'order': order}
     return render(request, 'inventory.html', context)
 
+@login_required(login_url='login')
 def updateFood(request, pk):
     datas = Menus.objects.get(id=pk)
     form = Menu(instance=datas)
@@ -81,7 +84,7 @@ def updateFood(request, pk):
 
     return render(request, 'update.html/', context)
 
-
+@login_required(login_url='login')
 def deleteFood(request, pk):
     datas = Menus.objects.get(id=pk)
     if request.method == "POST":
@@ -91,6 +94,7 @@ def deleteFood(request, pk):
     context = {'item':datas, 'media_url':settings.MEDIA_URL}
     return render(request, 'delete.html/', context)
 
+@login_required(login_url='login')
 def cancelOrder(request, pk):
     datas = Orders.objects.get(id=pk)
     if request.method == "POST":
@@ -102,6 +106,7 @@ def cancelOrder(request, pk):
 
     return render(request, 'cancel-order.html/', context)
 
+@login_required(login_url='login')
 def clearInventory(request):
     datas = Orders.objects.all()
     if request.method == "POST":
@@ -113,17 +118,17 @@ def clearInventory(request):
 
     return render(request, 'clear-inventory.html', context)
 
-def login(request):
+def loginAccount(request):
     form = CreateAccount()
     if request.method == "POST":
         form = CreateAccount(request.POST)
         username = request.POST.get('username')
-        password = request.POST.get('password')
+        password = request.POST.get('password1')
 
         user = authenticate(request, username=username, password=password)
-        if user is not None and user.is_superuser:
+        if user is not None:
             login(request, user)
-            return redirect('registration')
+            return redirect('index')
         else:
             messages.success(request, "Invalid Credentials. user Not Found")
     
@@ -132,16 +137,17 @@ def login(request):
 
 def createAccount(request):
     form = CreateAccount()
+
     if request.method == "POST":
         form = CreateAccount(request.POST)
         if form.is_valid():
-            form.save
-        return redirect('login')
+            form.save()
+            return redirect('login')
 
     context = {'form': form}
 
     return render(request, 'accounts/registration.html', context)
 
-def logout(request):
+def logoutAccount(request):
     logout(request)
     return redirect('login')
