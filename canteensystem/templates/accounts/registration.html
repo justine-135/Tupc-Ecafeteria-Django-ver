@@ -45,13 +45,13 @@
     <section class="registration-form accounts-form">
       <h1>Create an account</h1>
       <hr />
-      <form action="" method="POST" class="d-flex flex-column">
+      <form method="POST" enctype= multipart/form-data class="d-flex flex-column">
         {% csrf_token %}
         <div class="name-inputs d-flex justify-content-between mb-2">
           {{form.first_name}} {{form.last_name}}
         </div>
-        {{form.username}} {{form.password}} {{form.password2}}
-        <button class="btn btn-register mb-2">Register</button>
+        {{form.username}} {{form.password1}} {{form.password2}}
+        <input class="btn btn-register mb-2" type="submit" value="Register" />
         <p class="text-center">
           Already have an account? Login <a href="{% url 'login' %}">here</a>
         </p>
@@ -59,9 +59,13 @@
     </section>
 
     <script>
+      const pwd = document.querySelector("#id_password1");
       const reenterpwd = document.querySelector("#id_password2");
       reenterpwd.setAttribute("placeholder", "Re-enter password");
       reenterpwd.setAttribute("class", "mb-2");
+
+      pwd.setAttribute("placeholder", "Enter password");
+      pwd.setAttribute("class", "mb-2");
     </script>
   </body>
 </html>
