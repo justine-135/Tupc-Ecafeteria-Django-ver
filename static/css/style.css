@@ -684,6 +684,10 @@ img {
   background-color: white;
 }
 
+.login-form{
+  width: 25%;
+}
+
 .btn-register {
   background-color: #efa536;
   color: white;
