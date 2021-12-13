@@ -42,24 +42,11 @@
     />
   </head>
   <body class="accounts-page">
-    <section class="registration-form accounts-form">
+    <section class="login-form accounts-form">
       <h1>Login</h1>
       <hr />
       <form action="" method="POST" class="d-flex flex-column">
-        {% csrf_token %}
-        <!--<input
-          type="text"
-          class="mb-2"
-          name="username"
-          placeholder="Enter username"
-        />
-        <input
-          type="password"
-          class="mb-2"
-          name="password"
-          placeholder="Enter password"
-        /> -->
-        {{form.username}} {{form.password}}
+        {% csrf_token %} {{form.username}} {{form.password1}}
         <button class="btn btn-register mb-2">Login</button>
         <p class="text-center">
           Don't have an account? Register
@@ -69,9 +56,10 @@
     </section>
 
     <script>
-      const reenterpwd = document.querySelector("#id_password2");
-      reenterpwd.setAttribute("placeholder", "Re-enter password");
-      reenterpwd.setAttribute("class", "mb-2");
+      const pwd = document.querySelector("#id_password1");
+
+      pwd.setAttribute("placeholder", "Enter password");
+      pwd.setAttribute("class", "mb-2");
     </script>
   </body>
 </html>
