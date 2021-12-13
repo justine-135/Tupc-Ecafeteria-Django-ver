@@ -84,6 +84,7 @@
           </li>
         </ul>
       </div>
+      <a href="{% url 'logout' %}">Logout</a>
     </nav>
 
     <form
@@ -396,8 +397,6 @@
                             <a href="{% url 'update' drink.id %}">Edit</a>
                             <a href="{% url 'delete' drink.id %}">Delete</a>
                           </td>
-                      
-                          
                         </tr>
                         {% endfor %}
                       </tbody>
@@ -435,8 +434,6 @@
                             <a href="{% url 'update' addon.id %}">Edit</a>
                             <a href="{% url 'delete' addon.id %}">Delete</a>
                           </td>
-                        
-                          
                         </tr>
                         {% endfor %}
                       </tbody>
