@@ -54,6 +54,9 @@
         <input class="btn btn-register mb-2" type="submit" value="Register" />
         <p class="text-center">
           Already have an account? Login <a href="{% url 'login' %}">here</a>
+          {% for message in messages %}
+            <p id="msg">{{message}}</p>
+          {% endfor %}
         </p>
       </form>
     </section>
