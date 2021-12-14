@@ -144,7 +144,7 @@ def createAccount(request):
             messages.success(request, 'Registered Successfully')
             return redirect('login')
         else:
-            messages.error(request, "Password is Incorrect.")
+            messages.error(request, "Password does not match. Please try again.")
 
     context = {'form': form}
 
