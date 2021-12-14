@@ -1,7 +1,6 @@
 from django.conf.urls import url
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.core.checks import messages
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .form import Menu, CreateAccount
@@ -130,7 +129,7 @@ def loginAccount(request):
             login(request, user)
             return redirect('index')
         else:
-            messages.success(request, "Invalid Credentials. user Not Found")
+            messages.error(request, "Username or Password is incorrect.")
     
     context = {'form': form}
     return render(request, 'accounts/login.html', context)
@@ -142,6 +141,7 @@ def createAccount(request):
         form = CreateAccount(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Registered Successfully')
             return redirect('login')
 
     context = {'form': form}
