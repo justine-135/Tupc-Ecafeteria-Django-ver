@@ -48,7 +48,7 @@
       <form action="" method="POST" class="d-flex flex-column">
         {% csrf_token %} {{form.username}} {{form.password1}}
         {% for message in messages %}
-          <p>{{message}}</p>
+          <p class="msg">{{message}}</p>
         {% endfor %}
         <button class="btn btn-register mb-2">Login</button>
         <p class="text-center">
