@@ -692,3 +692,9 @@ img {
   background-color: #efa536;
   color: white;
 }
+
+.msg {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
