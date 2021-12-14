@@ -129,7 +129,7 @@ def loginAccount(request):
             login(request, user)
             return redirect('index')
         else:
-            messages.error(request, "Username or Password is incorrect.")
+            messages.error(request, "Username or Password is Incorrect.")
     
     context = {'form': form}
     return render(request, 'accounts/login.html', context)
@@ -143,6 +143,8 @@ def createAccount(request):
             form.save()
             messages.success(request, 'Registered Successfully')
             return redirect('login')
+        else:
+            messages.error(request, "Password is Incorrect.")
 
     context = {'form': form}
 
