@@ -698,3 +698,15 @@ img {
   text-align: center;
   font-size: 14px;
 }
+
+.logout-btn{
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.logout-btn:hover{
+  color: white;
+  text-decoration: none;
+}
