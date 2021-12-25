@@ -20,8 +20,8 @@ class CreateAccount(UserCreationForm):
         model = User
         fields = ['first_name', 'last_name','username', 'password1', 'password2']
         widgets={
-        'first_name': forms.TextInput(attrs={'placeholder': 'First name','class':'w-75'}),
+        'first_name': forms.TextInput(attrs={'placeholder': 'First name','class':'w-75', 'autofocus':'true'}),
         'last_name': forms.TextInput(attrs={'placeholder': 'Last name','class':'w-75'}),
-        'username': forms.TextInput(attrs={'placeholder': 'Enter username', 'class': 'mb-2'}),
+        'username': forms.TextInput(attrs={'placeholder': 'Enter username', 'class': 'mb-2', 'autocomplete':'off'}),
 
         }
