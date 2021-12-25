@@ -682,9 +682,11 @@ img {
   height: auto;
   width: 30%;
   background-color: white;
+  min-width: 267px;
+  max-width: 350px;
 }
 
-.login-form{
+.login-form {
   width: 25%;
 }
 
@@ -699,14 +701,14 @@ img {
   font-size: 14px;
 }
 
-.logout-btn{
+.logout-btn {
   background-color: red;
   color: white;
   padding: 5px;
   border-radius: 5px;
 }
 
-.logout-btn:hover{
+.logout-btn:hover {
   color: white;
   text-decoration: none;
 }
