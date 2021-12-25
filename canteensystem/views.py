@@ -1,11 +1,13 @@
-from django.conf.urls import url
-from django.contrib.auth import authenticate, login, logout
+# from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.shortcuts import render, redirect
 from .form import Menu, CreateAccount
 from .models import Menus, Orders
 from django.conf import settings
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
+from django.contrib.auth.models import User
+import re
 
 @login_required(login_url='login')
 def index(request):
@@ -29,6 +31,7 @@ def index(request):
 
     return render(request, 'index.html', context)
 
+@login_required(login_url='login')
 def menu(request):
     form = Orders()
     drinks = Menus.objects.filter(item_categories="drinks")
@@ -139,12 +142,51 @@ def createAccount(request):
 
     if request.method == "POST":
         form = CreateAccount(request.POST)
+        fname = request.POST.get('first_name')
+        lname = request.POST.get('last_name')
+        password = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        user = request.POST.get('username')
+        min = 8
+        regex = re.compile('[.@_!#$%^&*()<>?/\|}{~:]')
+
+
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Registered Successfully')
-            return redirect('login')
+            if fname == '' or lname == '':
+                messages.info(request, "Fill all forms.")
+
+            elif regex.search(user) != None or regex.search(fname) != None or regex.search(lname) != None or regex.search(password) != None:
+                messages.info(request, "Symbols and special characters not allowed.")
+
+            else:
+                form.save()
+                messages.success(request, 'Registered Successfully')
+                return redirect('login')
+
         else:
-            messages.info(request, "Password does not match. Please try again.")
+            exist = User.objects.filter(username=user).exists()
+            if fname == '' or lname == '' or password == '' or password2 == '' or user == '':
+                messages.info(request, "Fill all forms.")
+                
+            elif password != password2:
+                messages.info(request, "Password does not match. Please try again.")
+
+            elif exist:
+                messages.info(request, "Account is existing.")
+
+            elif len(password) < min:
+                messages.info(request, "Password too short.")
+
+            else:
+                messages.info(request, "Invalid input.")
+
+
+
+            
+
+        #     # else:
+        #     #     messages.info(request, "password wrong.")
+
 
     context = {'form': form}
 
