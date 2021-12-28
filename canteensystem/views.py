@@ -172,13 +172,16 @@ def createAccount(request):
                 messages.info(request, "Password does not match. Please try again.")
 
             elif exist:
-                messages.info(request, "Account is existing.")
+                messages.info(request, "Username already exist.")
 
             elif len(password) < min:
                 messages.info(request, "Password too short.")
 
             else:
-                messages.info(request, "Invalid input.")
+                messages.info(request, "Password must have:")
+                messages.info(request, "Lower and uppercase characters.")
+                messages.info(request, "Be at least 8 characters long.")
+                messages.info(request, "At least single number.")
 
 
 
