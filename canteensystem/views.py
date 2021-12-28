@@ -175,7 +175,7 @@ def createAccount(request):
                 messages.info(request, "Username already exist.")
 
             elif len(password) < min:
-                messages.info(request, "Password too short.")
+                messages.info(request, "Password must at least 8 characters long.")
 
             else:
                 messages.info(request, "Password must have:")
