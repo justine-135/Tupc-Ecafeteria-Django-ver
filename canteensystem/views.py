@@ -180,7 +180,6 @@ def createAccount(request):
             else:
                 messages.info(request, "Password must have:")
                 messages.info(request, "Lower and uppercase characters.")
-                messages.info(request, "Be at least 8 characters long.")
                 messages.info(request, "At least single number.")
 
 
