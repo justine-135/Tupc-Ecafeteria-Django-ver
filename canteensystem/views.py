@@ -135,17 +135,11 @@ def loginAccount(request):
     return render(request, 'accounts/login.html', context)
 
 def createAccount(request):
-    username = request.POST.get('username')
-    password = request.POST.get('password1')
-    user = authenticate(request, username=username, password=password)
-
     if request.user.is_authenticated:
         return redirect('index')
 
-
     else:
         form = CreateAccount()
-
         if request.method == "POST":
             form = CreateAccount(request.POST)
             fname = request.POST.get('first_name')
@@ -155,7 +149,6 @@ def createAccount(request):
             user = request.POST.get('username')
             min = 8
             regex = re.compile('[.@_!#$%^&*()<>?/\|}{~:]')
-
 
             if form.is_valid():
                 if fname == '' or lname == '':
