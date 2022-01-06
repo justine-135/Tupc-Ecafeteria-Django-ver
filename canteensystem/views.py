@@ -40,7 +40,6 @@ def menu(request):
     lunchmeals = Menus.objects.filter(item_categories="lunchmeal")
     context = {'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'media_url':settings.MEDIA_URL}
 
-    
     if request.method == 'POST':
         foods = []
 
@@ -58,8 +57,6 @@ def menu(request):
         form.total_purchase = total
         form.save()
 
-
-    
     return render(request, 'menu.html', context)
 
 @login_required(login_url='login')
@@ -138,61 +135,62 @@ def loginAccount(request):
     return render(request, 'accounts/login.html', context)
 
 def createAccount(request):
-    form = CreateAccount()
+    username = request.POST.get('username')
+    password = request.POST.get('password1')
+    user = authenticate(request, username=username, password=password)
 
-    if request.method == "POST":
-        form = CreateAccount(request.POST)
-        fname = request.POST.get('first_name')
-        lname = request.POST.get('last_name')
-        password = request.POST.get('password1')
-        password2 = request.POST.get('password2')
-        user = request.POST.get('username')
-        min = 8
-        regex = re.compile('[.@_!#$%^&*()<>?/\|}{~:]')
+    if request.user.is_authenticated:
+        return redirect('index')
 
 
-        if form.is_valid():
-            if fname == '' or lname == '':
-                messages.info(request, "Fill all forms.")
+    else:
+        form = CreateAccount()
 
-            elif regex.search(user) != None or regex.search(fname) != None or regex.search(lname) != None or regex.search(password) != None:
-                messages.info(request, "Symbols and special characters not allowed.")
+        if request.method == "POST":
+            form = CreateAccount(request.POST)
+            fname = request.POST.get('first_name')
+            lname = request.POST.get('last_name')
+            password = request.POST.get('password1')
+            password2 = request.POST.get('password2')
+            user = request.POST.get('username')
+            min = 8
+            regex = re.compile('[.@_!#$%^&*()<>?/\|}{~:]')
 
-            else:
-                form.save()
-                messages.success(request, 'Registered Successfully')
-                return redirect('login')
 
-        else:
-            exist = User.objects.filter(username=user).exists()
-            if fname == '' or lname == '' or password == '' or password2 == '' or user == '':
-                messages.info(request, "Fill all forms.")
-                
-            elif password != password2:
-                messages.info(request, "Password does not match. Please try again.")
+            if form.is_valid():
+                if fname == '' or lname == '':
+                    messages.info(request, "Fill all forms.")
 
-            elif exist:
-                messages.info(request, "Username already exist.")
+                elif regex.search(user) != None or regex.search(fname) != None or regex.search(lname) != None or regex.search(password) != None:
+                    messages.info(request, "Symbols and special characters not allowed.")
 
-            elif len(password) < min:
-                messages.info(request, "Password must at least 8 characters long.")
+                else:
+                    form.save()
+                    messages.success(request, 'Registered Successfully')
+                    return redirect('login')
 
             else:
-                messages.info(request, "Password must have:")
-                messages.info(request, "Lower and uppercase characters.")
-                messages.info(request, "At least single number.")
+                exist = User.objects.filter(username=user).exists()
+                if fname == '' or lname == '' or password == '' or password2 == '' or user == '':
+                    messages.info(request, "Fill all forms.")
+                    
+                elif password != password2:
+                    messages.info(request, "Password does not match. Please try again.")
 
+                elif exist:
+                    messages.info(request, "Username already exist.")
 
+                elif len(password) < min:
+                    messages.info(request, "Password must at least 8 characters long.")
 
-            
+                else:
+                    messages.info(request, "Password must have:")
+                    messages.info(request, "Lower and uppercase characters.")
+                    messages.info(request, "At least single number.")
 
-        #     # else:
-        #     #     messages.info(request, "password wrong.")
+        context = {'form': form}
 
-
-    context = {'form': form}
-
-    return render(request, 'accounts/registration.html', context)
+        return render(request, 'accounts/registration.html', context)
 
 def logoutAccount(request):
     logout(request)
