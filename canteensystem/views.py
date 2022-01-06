@@ -118,21 +118,30 @@ def clearInventory(request):
     return render(request, 'clear-inventory.html', context)
 
 def loginAccount(request):
-    form = CreateAccount()
-    if request.method == "POST":
-        form = CreateAccount(request.POST)
-        username = request.POST.get('username')
-        password = request.POST.get('password1')
+    if request.user.is_authenticated:
+        return redirect('index')
 
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('index')
-        else:
-            messages.info(request, "Username or Password is Incorrect.")
-    
-    context = {'form': form}
-    return render(request, 'accounts/login.html', context)
+    else:
+        form = CreateAccount()
+        if request.method == "POST":
+            form = CreateAccount(request.POST)
+            username = request.POST.get('username')
+            password = request.POST.get('password1')
+
+            user = authenticate(request, username=username, password=password)
+            if user is not None and user.is_superuser:
+                login(request, user)
+                return redirect('index')
+            
+            elif user is not None and user.is_staff:
+                login(request, user)
+                return redirect('index')
+
+            else:
+                messages.info(request, "Username or Password is Incorrect.")
+        
+        context = {'form': form}
+        return render(request, 'accounts/login.html', context)
 
 def createAccount(request):
     if request.user.is_authenticated:
