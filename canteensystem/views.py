@@ -167,6 +167,7 @@ def createAccount(request):
                     messages.info(request, "Symbols and special characters not allowed.")
 
                 else:
+                    form.instance.is_staff = True
                     form.save()
                     messages.success(request, 'Registered Successfully')
                     return redirect('login')
@@ -183,7 +184,7 @@ def createAccount(request):
                     messages.info(request, "Username already exist.")
 
                 elif len(password) < min:
-                    messages.info(request, "Password must at least 8 characters long.")
+                    messages.info(request, "Password must be at least 8 characters long.")
 
                 else:
                     messages.info(request, "Password must have:")
