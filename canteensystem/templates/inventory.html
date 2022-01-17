@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link
@@ -48,6 +47,14 @@
         <img src="{% static 'img/favicon.png' %}" class="tup-icon" alt="logo" />
         TUPC E-Cafeteria
       </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="topnav">
           <li>
@@ -166,8 +173,6 @@
     </table>
 
     <script src="{% static 'js/ecafeScript.js' %}"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </body>
 </html>
-
-<!-- href='status_success.php?order_number=<//?php echo $row['order_number'];?>' -->
-<!-- href='status_cancel.php?order_number=<//?php echo $row['order_number'];?>' -->
