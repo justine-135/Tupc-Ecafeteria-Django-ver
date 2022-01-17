@@ -51,7 +51,13 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="topnav">
           <li>
-            <a href="/menu" id="menu-tab" data-toggle="tooltip" title="Menu" target="_blank">
+            <a
+              href="/menu"
+              id="menu-tab"
+              data-toggle="tooltip"
+              title="Menu"
+              target="_blank"
+            >
               <i class="fa fa-home"></i>
             </a>
           </li>
@@ -69,10 +75,9 @@
               ><i class="fa fa-chart-line"></i
             ></a>
           </li>
+          <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
         </ul>
       </div>
-      <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
-
     </nav>
 
     <nav class="navbar navbar-expand-sm navbar-dark topnav head4 sticky-top">
@@ -144,14 +149,18 @@
 
       <tbody class="tb-body" id="id-tb-body">
         {% for order in order %}
-          <tr>
-            <td>{{ order.id}}</td>
-            <td>{{ order.time }}</td>
-            <td>{{ order.item }}</td>
-            <td>{{ order.total_purchase }}</td>
-            <td>{{ order.item_status }}</td>
-            <td><a class="change2" href="{% url 'cancel-order' order.id %}">Cancel</a></td>
-          </tr>
+        <tr>
+          <td>{{ order.id}}</td>
+          <td>{{ order.time }}</td>
+          <td>{{ order.item }}</td>
+          <td>{{ order.total_purchase }}</td>
+          <td>{{ order.item_status }}</td>
+          <td>
+            <a class="change2" href="{% url 'cancel-order' order.id %}"
+              >Cancel</a
+            >
+          </td>
+        </tr>
         {% endfor %}
       </tbody>
     </table>
