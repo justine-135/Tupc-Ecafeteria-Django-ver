@@ -421,9 +421,12 @@ img {
 }
 
 .topnav {
+  display: flex;
+  align-items: center;
   list-style-type: none;
   margin: 0;
   overflow: hidden;
+  width: 100%;
 }
 
 .topnav li {
@@ -597,6 +600,7 @@ img {
 
 .food-item-image {
   max-width: 200px;
+  min-width: 150px;
 }
 
 .django-form {
@@ -702,6 +706,7 @@ img {
 }
 
 .logout-btn {
+  margin-left: auto;
   background-color: red;
   color: white;
   padding: 5px;
