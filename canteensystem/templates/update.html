@@ -85,7 +85,6 @@
         </ul>
       </div>
       <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
-
     </nav>
 
     <form
@@ -97,14 +96,7 @@
       <div class="container-fluid contents">
         <div class="row">
           <div
-            class="
-              col-sm-3
-              d-flex
-              flex-column
-              justify-content-between
-              item-height
-              left-content
-            "
+            class="col-sm-3 d-flex flex-column justify-content-between item-height left-content"
           >
             <label class="headeritem">Item Management </label>
 
@@ -157,7 +149,8 @@
               >Select an image <i class="fa fa-upload"></i
             ></label> -->
             <div class="django-form d-flex flex-column justify-content-between">
-              {{form}}
+              {{form.item_categories}} {{form.item_name}} {{form.item_price}}
+              {{form.item_quantity}}
             </div>
             <div class="image-preview" id="image-preview">
               <img class="" id="preview-insert-img" alt="" />
