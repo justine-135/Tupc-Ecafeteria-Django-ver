@@ -2,7 +2,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .form import Menu, CreateAccount
-from .models import Menus, Orders
+from .models import Menus, Orders, CustomUser
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -11,6 +11,12 @@ import re
 
 @login_required(login_url='login')
 def index(request):
+    if request.user.is_authenticated and request.user.is_customer:
+        return redirect('menu')
+
+    # elif request.user.is_authenticated and request.user.is_admins:
+    #     return redirect('index')
+
     form = Menu()
     datas = Menus.objects.all()
 
@@ -33,6 +39,9 @@ def index(request):
 
 @login_required(login_url='login')
 def menu(request):
+    if request.user.is_authenticated and request.user.is_admins:
+        return redirect('index')
+    
     form = Orders()
     drinks = Menus.objects.filter(item_categories="drinks")
     addons = Menus.objects.filter(item_categories="addons")
@@ -61,6 +70,11 @@ def menu(request):
 
 @login_required(login_url='login')
 def inventory(request):
+    if request.user.is_authenticated and request.user.is_admins:
+        return redirect('index')
+    elif request.user.is_authenticated and request.user.is_customer:
+        return redirect('menu')
+
     order = Orders.objects.all()
     context = {'order': order}
     return render(request, 'inventory.html', context)
@@ -129,9 +143,9 @@ def loginAccount(request):
             password = request.POST.get('password1')
 
             user = authenticate(request, username=username, password=password)
-            if user is not None and user.is_superuser:
+            if user is not None and user.is_customer:
                 login(request, user)
-                return redirect('index')
+                return redirect('menu')
             
             elif user is not None and user.is_staff:
                 login(request, user)
@@ -156,8 +170,11 @@ def createAccount(request):
             password = request.POST.get('password1')
             password2 = request.POST.get('password2')
             user = request.POST.get('username')
+            user_type = request.POST.get('user_type')
+
             min = 8
             regex = re.compile('[.@_!#$%^&*()<>?/\|}{~:]')
+            print(user_type)
 
             if form.is_valid():
                 if fname == '' or lname == '':
@@ -168,9 +185,17 @@ def createAccount(request):
 
                 else:
                     form.instance.is_staff = True
-                    form.save()
-                    messages.success(request, 'Registered Successfully')
-                    return redirect('login')
+                    if user_type == "customer":
+                        form.instance.is_customer = True
+                        form.save()
+                        messages.success(request, 'Registered Successfully')
+                        return redirect('login')
+
+                    if user_type == "admin":
+                        form.instance.is_admins = True
+                        form.save()
+                        messages.success(request, 'Registered Successfully')
+                        return redirect('login')
 
             else:
                 exist = User.objects.filter(username=user).exists()
