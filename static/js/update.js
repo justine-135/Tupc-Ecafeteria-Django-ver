@@ -177,10 +177,10 @@ function itemFunc() {
     });
   });
 
-  preview.src = djangoForm.childNodes[15].getAttribute("href");
-  console.log(djangoForm.childNodes);
-  djangoForm.childNodes[14].textContent = "";
-  djangoForm.childNodes[15].innerHTML = "";
-  djangoForm.childNodes[16].style.display = "none";
-  djangoForm.childNodes[17].textContent = "";
+  // preview.src = djangoForm.childNodes[15].getAttribute("href");
+  // console.log(djangoForm.childNodes);
+  // djangoForm.childNodes[14].textContent = "";
+  // djangoForm.childNodes[15].innerHTML = "";
+  // djangoForm.childNodes[16].style.display = "none";
+  // djangoForm.childNodes[17].textContent = "";
 }
