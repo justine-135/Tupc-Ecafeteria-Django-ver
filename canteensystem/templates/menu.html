@@ -17,10 +17,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link
-    rel="shortcut icon"
-    type="image/x-icon"
-    href="{% static 'img/favicon.png' %}"
-  />    <link rel="preconnect" href="https://fonts.gstatic.com" />
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'img/favicon.png' %}"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Latest compiled and minified CSS -->
@@ -59,14 +60,7 @@
   <body class="main" onload="indexFunc()">
     <header>
       <nav
-        class="
-          navbar navbar-expand-sm navbar-dark
-          topnav
-          fixed-top
-          head
-          head2
-          col-xl-12
-        "
+        class="navbar navbar-expand-sm navbar-dark topnav fixed-top head head2 col-xl-12"
       >
         <a class="navbar-brand">
           <img
@@ -91,6 +85,7 @@
             >0</span
           >
         </button>
+        <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
       </nav>
     </header>
 
@@ -98,13 +93,7 @@
 
     <div class="cover col-12" id="idCover">
       <div
-        class="
-          container-fluid
-          pt-1
-          col-12 col-md-12 col-xl-12
-          justify-content-center
-          quote
-        "
+        class="container-fluid pt-1 col-12 col-md-12 col-xl-12 justify-content-center quote"
       >
         <h3 id="select">
           <pre>
@@ -116,11 +105,7 @@ feel good
       </div>
     </div>
 
-    <form
-      class="form1"
-      id="index-form"
-      method="post"
-    >
+    <form class="form1" id="index-form" method="post">
       {% csrf_token %}
 
       <div class="d-flex justify-content-end form-width">
@@ -160,13 +145,7 @@ feel good
             </span>
           </p>
           <input
-            class="
-              btn
-              col-8 col-md-8 col-lg-7 col-xl-8
-              btn-primary
-              submit-btn
-              mr-4
-            "
+            class="btn col-8 col-md-8 col-lg-7 col-xl-8 btn-primary submit-btn mr-4"
             data-toggle="tooltip"
             data-placement="bottom"
             title="Submit item"
@@ -202,9 +181,15 @@ feel good
                 class="img"
                 type="button"
                 src="/static/temp_img/{{ breakfast.item_img }}"
-                value={{ breakfast.item_quantity }}
-                value2={{ breakfast.item_price }}
-                name= {{ breakfast.item_name }}
+                value="{{"
+                breakfast.item_quantity
+                }}
+                value2="{{"
+                breakfast.item_price
+                }}
+                name="{{"
+                breakfast.item_name
+                }}
                 id="dish"
               />
               <div class="caption" style="background-color: white" id="caption">
@@ -228,9 +213,15 @@ feel good
                 class="img"
                 type="button"
                 src="/static/temp_img/{{ lunchmeal.item_img }}"
-                value={{ lunchmeal.item_quantity }}
-                value2={{ lunchmeal.item_price }}
-                name= {{ lunchmeal.item_name }}
+                value="{{"
+                lunchmeal.item_quantity
+                }}
+                value2="{{"
+                lunchmeal.item_price
+                }}
+                name="{{"
+                lunchmeal.item_name
+                }}
                 id="dish"
               />
               <div class="caption" style="background-color: white" id="caption">
@@ -254,9 +245,15 @@ feel good
                 class="img"
                 type="button"
                 src="/static/temp_img/{{ drink.item_img }}"
-                value={{ drink.item_quantity }}
-                value2={{ drink.item_price }}
-                name= {{ drink.item_name }}
+                value="{{"
+                drink.item_quantity
+                }}
+                value2="{{"
+                drink.item_price
+                }}
+                name="{{"
+                drink.item_name
+                }}
                 id="dish"
               />
               <div class="caption" style="background-color: white" id="caption">
@@ -276,9 +273,15 @@ feel good
                 class="img"
                 type="button"
                 src="/static/temp_img/{{ addon.item_img }}"
-                value={{ addon.item_quantity }}
-                value2={{ addon.item_price }}
-                name= {{ addon.item_name }}
+                value="{{"
+                addon.item_quantity
+                }}
+                value2="{{"
+                addon.item_price
+                }}
+                name="{{"
+                addon.item_name
+                }}
                 id="dish"
               />
               <div class="caption" style="background-color: white" id="caption">
@@ -297,14 +300,7 @@ feel good
 
     <nav class="fixed-bottom navbar">
       <div
-        class="
-          col-12 col-lg-12
-          row
-          d-flex
-          flex-row
-          justify-content-center
-          btn-categories
-        "
+        class="col-12 col-lg-12 row d-flex flex-row justify-content-center btn-categories"
         id="btn-group"
       >
         <h1 class="col-xl-4" id="menu-title">Home</h1>
