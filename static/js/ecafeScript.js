@@ -420,9 +420,9 @@ function itemFunc() {
 
     modal.innerHTML = `
     <img class="" id="modal-preview" alt='' src="${imgSrc}">
-    Add this item to: <h6 class='popup'>${drpDown.value}</h6>  <hr>
-    Item: <h6 class='popup'>${foodName.value}</h6> <hr>
-    Quantity: <h6 class='popup'>${foodQuantity.value}</h6> <hr>
+    Add this item to: <h6 class='popup'>${drpDown.value}</h6>
+    Item: <h6 class='popup'>${foodName.value}</h6>
+    Quantity: <h6 class='popup'>${foodQuantity.value}</h6>
     Price: <h6 class='popup'>${foodPrice.value}</h6>
     `;
   });
