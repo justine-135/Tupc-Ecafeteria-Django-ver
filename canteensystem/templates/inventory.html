@@ -3,12 +3,6 @@
   <head>
     <title>E-CAFETERIA</title>
     {% load static %}
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -35,6 +29,13 @@
       type="image/x-icon"
       href="{% static 'img/favicon.png' %}"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    
     <link rel="stylesheet" href="{%  static  'css/style.css'  %}" />
   </head>
   <body
@@ -61,29 +62,38 @@
             <a
               href="/menu"
               id="menu-tab"
-              data-toggle="tooltip"
               title="Menu"
-              target="_blank"
             >
-              <i class="fa fa-home"></i>
-            </a>
-          </li>
-          <li>
-            <a href="/" data-toggle="tooltip" title="Item management"
-              ><i class="fas fa-warehouse"></i
-            ></a>
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="utensils" class="navlink-svg svg-inline--fa fa-utensils fa-w-13" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 416 512"><path fill="currentColor" d="M207.9 15.2c.8 4.7 16.1 94.5 16.1 128.8 0 52.3-27.8 89.6-68.9 104.6L168 486.7c.7 13.7-10.2 25.3-24 25.3H80c-13.7 0-24.7-11.5-24-25.3l12.9-238.1C27.7 233.6 0 196.2 0 144 0 109.6 15.3 19.9 16.1 15.2 19.3-5.1 61.4-5.4 64 16.3v141.2c1.3 3.4 15.1 3.2 16 0 1.4-25.3 7.9-139.2 8-141.8 3.3-20.8 44.7-20.8 47.9 0 .2 2.7 6.6 116.5 8 141.8.9 3.2 14.8 3.4 16 0V16.3c2.6-21.6 44.8-21.4 48-1.1zm119.2 285.7l-15 185.1c-1.2 14 9.9 26 23.9 26h56c13.3 0 24-10.7 24-24V24c0-13.2-10.7-24-24-24-82.5 0-221.4 178.5-64.9 300.9z"></path></svg>
+            <span>Food Menu</span>  
+          </a>
           </li>
           <li>
             <a
-              class="active"
-              href="/inventory"
-              data-toggle="tooltip"
-              title="Inventory"
-              ><i class="fa fa-chart-line"></i
-            ></a>
+              href="/"
+              title="Item management"
+              ><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="warehouse" class="navlink-svg svg-inline--fa fa-warehouse fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M504 352H136.4c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8H504c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm0 96H136.1c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm0-192H136.6c-4.4 0-8 3.6-8 8l-.1 48c0 4.4 3.6 8 8 8H504c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zm106.5-139L338.4 3.7a48.15 48.15 0 0 0-36.9 0L29.5 117C11.7 124.5 0 141.9 0 161.3V504c0 4.4 3.6 8 8 8h80c4.4 0 8-3.6 8-8V256c0-17.6 14.6-32 32.6-32h382.8c18 0 32.6 14.4 32.6 32v248c0 4.4 3.6 8 8 8h80c4.4 0 8-3.6 8-8V161.3c0-19.4-11.7-36.8-29.5-44.3z"></path></svg>
+              <span>Admin</span>
+            </a>
+            </li>
+          <li>
+            <a class="active"
+            href="/inventory" title="Inventory"
+              >
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chart-line" class="navlink-svg svg-inline--fa fa-chart-line fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M496 384H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM464 96H345.94c-21.38 0-32.09 25.85-16.97 40.97l32.4 32.4L288 242.75l-73.37-73.37c-12.5-12.5-32.76-12.5-45.25 0l-68.69 68.69c-6.25 6.25-6.25 16.38 0 22.63l22.62 22.62c6.25 6.25 16.38 6.25 22.63 0L192 237.25l73.37 73.37c12.5 12.5 32.76 12.5 45.25 0l96-96 32.4 32.4c15.12 15.12 40.97 4.41 40.97-16.97V112c.01-8.84-7.15-16-15.99-16z"></path></svg>
+              <span>Inventory</span>
+            </a>
           </li>
-          <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
-        </ul>
+          <div class="profile-div">
+            <div class="profile">
+              <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="navlink-svg svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>
+
+            </div>
+            <span class="name">{{name}}</span>
+            <span class="name-line">| </span>
+            <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
+
+          </div>        </ul>
       </div>
     </nav>
 
@@ -119,22 +129,18 @@
           <a
             class="btn btn-danger mb-1"
             id="reset-btn"
-            data-toggle="tooltip"
             title="Clear table"
             data-placement="left"
             href="{% url 'clear-inventory' %}"
-            ><i class="fas fa-folder-minus"></i
-          ></a>
+            >Delete Table</a>
           <a
             role="button"
             class="btn btn-info"
             onClick="window.location.reload()"
             id="refresh-btn"
-            data-toggle="tooltip"
             title="Synchronize"
             data-placement="left"
-            ><i class="fas fa-sync-alt"></i
-          ></a>
+            >Fetch Data</a>
         </div>
       </div>
     </nav>
