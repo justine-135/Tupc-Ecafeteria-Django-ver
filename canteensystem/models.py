@@ -27,12 +27,6 @@ class Orders(models.Model):
     item_status = CharField(max_length=30, verbose_name="item_status", blank=False)
 
 class CustomUser(AbstractUser):
-    # first_name = CharField(max_length=30, verbose_name="first_name", blank=True)
-    # last_name = CharField(max_length=30, verbose_name="last_name" , blank=True)
-    # user_name = CharField(max_length=30, verbose_name="username", blank=True)
-    # password1 = CharField(max_length=30, verbose_name="password1", blank=True )
-    # password2 = CharField(max_length=30, verbose_name="password2", blank=True)
-
     is_customer = models.BooleanField(default=False)
     is_admins = models.BooleanField(default=False)
 
