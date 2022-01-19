@@ -2,7 +2,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .form import Menu, CreateAccount
-from .models import Menus, Orders, CustomUser
+from .models import Menus, Orders
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -14,9 +14,6 @@ def index(request):
     if request.user.is_authenticated and request.user.is_customer:
         return redirect('menu')
 
-    # elif request.user.is_authenticated and request.user.is_admins:
-    #     return redirect('index')
-
     form = Menu()
     datas = Menus.objects.all()
 
@@ -25,8 +22,9 @@ def index(request):
     breakfast = Menus.objects.filter(item_categories="breakfast")
     lunchmeal = Menus.objects.filter(item_categories="lunchmeal")
     
-
-    context = {'form': form, "foods": datas, 'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeal': lunchmeal, 'media_url':settings.MEDIA_URL}
+    name = request.user.first_name
+    print(form)
+    context = {'form': form, "foods": datas, 'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeal': lunchmeal, 'name': name, 'media_url':settings.MEDIA_URL}
     if request.method == 'POST':
         form = Menu(request.POST, request.FILES)
         if form.is_valid():
@@ -47,7 +45,9 @@ def menu(request):
     addons = Menus.objects.filter(item_categories="addons")
     breakfast = Menus.objects.filter(item_categories="breakfast")
     lunchmeals = Menus.objects.filter(item_categories="lunchmeal")
-    context = {'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'media_url':settings.MEDIA_URL}
+    name = request.user.first_name
+
+    context = {'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'name': name, 'media_url':settings.MEDIA_URL}
 
     if request.method == 'POST':
         foods = []
@@ -75,8 +75,10 @@ def inventory(request):
     elif request.user.is_authenticated and request.user.is_customer:
         return redirect('menu')
 
+    name = request.user.first_name
+
     order = Orders.objects.all()
-    context = {'order': order}
+    context = {'order': order, 'name': name}
     return render(request, 'inventory.html', context)
 
 @login_required(login_url='login')
