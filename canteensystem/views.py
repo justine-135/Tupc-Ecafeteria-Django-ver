@@ -6,7 +6,7 @@ from .models import Menus, Orders
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.models import User
+from canteensystem.models import CustomUser
 import re
 
 @login_required(login_url='login')
@@ -200,7 +200,7 @@ def createAccount(request):
                         return redirect('login')
 
             else:
-                exist = User.objects.filter(username=user).exists()
+                exist = CustomUser.objects.filter(username=user).exists()
                 if fname == '' or lname == '' or password == '' or password2 == '' or user == '':
                     messages.info(request, "Fill all forms.")
                     
