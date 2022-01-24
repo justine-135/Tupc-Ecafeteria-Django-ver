@@ -43,7 +43,7 @@
   </head>
   <body class="accounts-page">
     <section class="registration-form accounts-form">
-      <h1>Create an account</h1>
+      <h1>Register an admin</h1>
       <hr />
       <form method="POST" enctype= multipart/form-data class="d-flex flex-column register-form">
         {% csrf_token %}
@@ -53,14 +53,13 @@
         </select>        <div class="name-inputs d-flex justify-content-between mb-2">
           {{form.first_name}} {{form.last_name}}
         </div>
-        {{form.username}} {{form.password1}} {{form.password2}}
+        {{form.username}}
+        {{form.email}} {{form.password1}} {{form.password2}}
         {% for message in messages %}
           <p class="msg">{{message}}</p>
         {% endfor %}
         <input class="btn btn-register mb-2" type="submit" value="Register" />
-        <p class="text-center">
-          Already have an account? Login <a href="{% url 'login' %}">here</a>
-        </p>
+        <a href="{% url 'admin-accounts' %}" class="reg-back">Back</a>
       </form>
     </section>
 
