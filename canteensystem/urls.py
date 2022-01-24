@@ -8,6 +8,8 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('menu/', views.menu, name='menu'),
     path('inventory/', views.inventory, name='inventory'),
+    path('admin-accounts/', views.admins, name='admin-accounts'),
+
     path('update/<str:pk>/', views.updateFood, name='update'),
     path('delete/<str:pk>/', views.deleteFood, name='delete'),
     path('cancel/<str:pk>/', views.cancelOrder, name='cancel-order'),
