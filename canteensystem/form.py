@@ -16,10 +16,11 @@ class Menu(forms.ModelForm):
 class CreateAccount(UserCreationForm):
     class Meta:
         model = CustomUser
-        fields = ['first_name', 'last_name','username', 'password1', 'password2']
+        fields = ['first_name', 'last_name','username', 'email', 'password1', 'password2']
         widgets={
         'first_name': forms.TextInput(attrs={'placeholder': 'First name','class':'w-75', 'autofocus':'true'}),
         'last_name': forms.TextInput(attrs={'placeholder': 'Last name','class':'w-75'}),
         'username': forms.TextInput(attrs={'placeholder': 'Enter username', 'class': 'mb-2', 'autocomplete':'off'}),
+        'email': forms.TextInput(attrs={'placeholder': 'Email', 'class': 'mb-2', 'type': 'email', 'autocomplete':'off'}),
 
         }
