@@ -22,7 +22,7 @@ def index(request):
     breakfast = Menus.objects.filter(item_categories="breakfast")
     lunchmeal = Menus.objects.filter(item_categories="lunchmeal")
     
-    name = request.user.first_name
+    name = request.user.email
     print(form)
     context = {'form': form, "foods": datas, 'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeal': lunchmeal, 'name': name, 'media_url':settings.MEDIA_URL}
     if request.method == 'POST':
@@ -45,7 +45,7 @@ def menu(request):
     addons = Menus.objects.filter(item_categories="addons")
     breakfast = Menus.objects.filter(item_categories="breakfast")
     lunchmeals = Menus.objects.filter(item_categories="lunchmeal")
-    name = request.user.first_name
+    name = request.user.email
 
     context = {'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'name': name, 'media_url':settings.MEDIA_URL}
 
@@ -75,11 +75,24 @@ def inventory(request):
     elif request.user.is_authenticated and request.user.is_customer:
         return redirect('menu')
 
-    name = request.user.first_name
+    name = request.user.email
 
     order = Orders.objects.all()
     context = {'order': order, 'name': name}
     return render(request, 'inventory.html', context)
+
+@login_required(login_url='login')
+def admins(request):
+    if request.user.is_authenticated and request.user.is_admins:
+        return redirect('index')
+    elif request.user.is_authenticated and request.user.is_customer:
+        return redirect('menu')
+
+    name = request.user.email
+
+    users = CustomUser.objects.all()
+    context = {'users': users, 'name': name}
+    return render(request, 'users.html', context)
 
 @login_required(login_url='login')
 def updateFood(request, pk):
@@ -159,8 +172,10 @@ def loginAccount(request):
         context = {'form': form}
         return render(request, 'accounts/login.html', context)
 
+
+@login_required(login_url='login')
 def createAccount(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and request.user.is_admins:
         return redirect('index')
 
     else:
