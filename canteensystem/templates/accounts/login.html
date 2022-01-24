@@ -47,14 +47,11 @@
       <hr />
       <form action="" method="POST" class="d-flex flex-column">
         {% csrf_token %} {{form.username}} {{form.password1}}
-        {% for message in messages %}
-          <p class="msg">{{message}}</p>
-        {% endfor %}
         <button class="btn btn-register mb-2">Login</button>
-        <p class="text-center">
-          Register an account 
-          <a href="{% url 'registration' %}">here</a>
-        </p>
+        {% for message in messages %}
+        <p class="msg">{{message}}</p>
+        {% endfor %}
+
       </form>
     </section>
 
