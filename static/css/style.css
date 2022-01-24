@@ -10,9 +10,8 @@ body {
 button:focus {
   outline: none;
 }
-.index-body{
+.index-body {
   background-image: linear-gradient(to right, #23272a, #35455d);
-
 }
 .main {
   background-color: #35455d;
@@ -294,7 +293,6 @@ h5 {
 .head3 {
   background-image: linear-gradient(to right, #23272a, #35455d);
   height: 100px;
-
 }
 
 .inventory-status {
@@ -366,9 +364,6 @@ h5 {
 }
 .tb-inventory tr {
   text-align: center;
-}
-.tb-body td {
-  width: 100px;
 }
 
 .activate-reset a:focus {
@@ -442,12 +437,12 @@ img {
   margin-right: 20px;
 }
 
-.topnav li a svg{
+.topnav li a svg {
   margin-right: 5px;
 }
 
-.topnav li a{
-  font-family: 'Heebo', sans-serif;
+.topnav li a {
+  font-family: "Heebo", sans-serif;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -463,7 +458,7 @@ img {
 .topnav li button:hover:not(.active) {
   color: white;
 }
-.topnav li a.active  {
+.topnav li a.active {
   color: white;
 }
 
@@ -722,7 +717,6 @@ img {
   font-size: 14px;
 }
 
-
 #id_item_img {
   color: white;
 }
@@ -749,31 +743,31 @@ img {
   border-radius: 3px;
 }
 
-.navlink-svg{
+.navlink-svg {
   width: 25px;
   height: 25px;
 }
 
-.profile-div{
+.profile-div {
   margin-left: auto;
   display: flex;
   align-items: center;
 }
 
-.profile-menu{
+.profile-menu {
   margin-left: 0px;
 }
 
-.profile svg{
+.profile svg {
   height: 20px;
   width: 20px;
 }
 
-.profile-div .name{
+.profile-div .name {
   color: white;
 }
 
-.profile{
+.profile {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -782,10 +776,9 @@ img {
   background-color: white;
   border-radius: 50%;
   margin-right: 5px;
-
 }
 
-.name-line{
+.name-line {
   margin-left: 5px;
   font-size: 1.5rem;
   color: white;
@@ -799,5 +792,49 @@ img {
 
 .logout-btn:hover {
   color: white;
+  text-decoration: none;
+}
+
+.user-nav {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.user-nav a {
+  font-size: 1rem;
+  background-color: rgb(47, 47, 155);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: auto;
+  border: 1px solid rgb(47, 47, 155);
+  transition: 100ms ease;
+}
+
+.user-nav a:hover{
+  text-decoration: none;
+  background-color: white;
+  color: rgb(47, 47, 155);
+}
+
+.user-nav h6 {
+  font-size: 2rem;
+}
+
+.reg-back{
+  background-color: rgb(255, 59, 59);
+  padding: 5px;
+  border-radius: .25rem;
+  text-align: center;
+  color: white;
+  border: 1px solid #efa536;
+  transition: 100ms ease;
+}
+
+.reg-back:hover{
+  background-color: white;
+  color: rgb(255, 59, 59);
+  border: 1px solid rgb(255, 59, 59);
   text-decoration: none;
 }
