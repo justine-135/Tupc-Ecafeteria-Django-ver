@@ -58,7 +58,7 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="topnav">
           <li>
-            <a href="/menu" id="menu-tab" title="Menu">
+            <a href="/menu" id="menu-tab" title="Menu" target="_blank"> 
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -98,7 +98,7 @@
             </a>
           </li>
           <li>
-            <a href="/inventory" title="Inventory">
+            <a href="/orders" title="Orders">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -165,7 +165,7 @@
 
     <nav class="user-nav">
       <h6>Admins</h6>
-      <a href="{% url 'registration' %}">Add an account</a>
+      <a class="add-account" href="{% url 'registration' %}">Add an account</a>
     </nav>
     <table
       class="tb-inventory tb-orders table table-bordered table-sm"
@@ -174,8 +174,10 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Joined</th>
           <th>Email</th>
           <th>Username</th>
+          <th>Fullname</th>
           <th>Superadmin</th>
           <th>Action</th>
         </tr>
@@ -185,10 +187,16 @@
         {% for user in users %}
         <tr>
           <td>{{ user.id}}</td>
+          <td>{{ user.date_joined }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.username }}</td>
-          <td>{{ user.is_superuser }}</td>
-            <td><a href="{% url 'permissions' user.id %}">Permissions</a>
+          <td class="flname">{{ user.first_name }} {{ user.last_name }}</td>
+          {% if user.is_superuser is True %}
+            <td>Yes</td>
+          {% else %}
+            <td>No</td>
+          {% endif %}          
+          <td><a href="{% url 'permissions' user.id %}">Permissions</a>
           </td>
         </tr>
         {% endfor %}
