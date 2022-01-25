@@ -177,7 +177,7 @@
           <th>Email</th>
           <th>Username</th>
           <th>Superadmin</th>
-          <th>Permission</th>
+          <th>Action</th>
         </tr>
       </thead>
 
@@ -188,7 +188,8 @@
           <td>{{ user.email }}</td>
           <td>{{ user.username }}</td>
           <td>{{ user.is_superuser }}</td>
-          <td>Permission</td>
+            <td><a href="{% url 'permissions' user.id %}">Permissions</a>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
