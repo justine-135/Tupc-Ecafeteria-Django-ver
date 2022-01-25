@@ -11,7 +11,7 @@ class Menu(forms.ModelForm):
             'item_name': forms.TextInput(attrs={'placeholder': 'Enter food', 'onkeypress': 'return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)', 'onpaste':"return false", 'ondrag':"return false", 'ondrop':"return false"}),
         'item_price': forms.TextInput(attrs={'placeholder': 'Enter Price', 'type': 'number', 'onkeypress': 'return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57', 'onpaste':"return false", 'ondrag':"return false", 'ondrop':"return false"}),
         'item_quantity': forms.TextInput(attrs={'placeholder': 'Enter Quantity', 'type': 'number', 'onkeypress': 'return event.keyCode === 8 || event.charCode >= 48 && event.charCode <= 57', 'onpaste':"return false", 'ondrag':"return false", 'ondrop':"return false"}),
-        'item-img': forms.FileInput(attrs={'class': "custom-file-input"})}
+        'item-img': forms.FileInput()}
 
 class CreateAccount(UserCreationForm):
     class Meta:
