@@ -16,7 +16,7 @@ function itemFunc() {
   let addBtn = document.getElementById("add-button");
   let preview = document.getElementById("preview-insert-img");
   const clearForm = document.querySelector("#clear");
-  const djangoForm = document.querySelector(".django-form");
+  const imgRemove = document.querySelector('.update-img')
 
   clearForm.addEventListener("click", () => {
     console.log("click");
@@ -108,6 +108,16 @@ function itemFunc() {
   });
 
   let imgSrc = "";
+  console.log(imgRemove.childNodes)
+  imgRemove.removeChild(imgRemove.childNodes[0])
+  imgRemove.removeChild(imgRemove.childNodes[0])
+  imgRemove.removeChild(imgRemove.childNodes[0])
+  imgRemove.removeChild(imgRemove.childNodes[0])
+
+  // imgRemove.childNodes[1].style.display = 'none'
+  // // imgRemove.childNodes[2].style.display = 'none'
+  // imgRemove.childNodes[3].style.display = 'none'
+  // imgRemove.childNodes[5].style.display = 'none'
 
   imgUpload.addEventListener("change", (event) => {
     console.log("change");
