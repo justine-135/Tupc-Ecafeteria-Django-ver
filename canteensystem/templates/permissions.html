@@ -58,7 +58,7 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="topnav">
           <li>
-            <a href="/menu" id="menu-tab" title="Menu">
+            <a href="/menu" id="menu-tab" title="Menu" target="_blank">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -98,7 +98,7 @@
             </a>
           </li>
           <li>
-            <a href="/inventory" title="Inventory">
+            <a href="/orders" title="Orders">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -118,7 +118,7 @@
             </a>
           </li>
           <li>
-            <a class="active" href="/admin-accounts" title="Admins">
+            <a class="active" href="{% url 'permissions' user.id %}" title="Admins">
               <svg
                 aria-hidden="true"
                 focusable="false"
@@ -155,7 +155,7 @@
                 ></path>
               </svg>
             </div>
-            <span class="name">{{name}}</span>
+            <span class="name">{{email}}</span>
             <span class="name-line">| </span>
             <a class="logout-btn" href="{% url 'logout' %}">Logout</a>
           </div>
@@ -166,7 +166,12 @@
         {% csrf_token %}
 
       <nav class="user-nav">
-        <h6>Admins</h6>
+        <div class="user-info">
+          <div class="user-id"><span >ID: </span><span class="user-tag">{{uid}}</span></div>
+          <div class="user-username "> <span >USERNAME: </span><span class="user-tag">{{name}}</span></div>
+          <div class="user-email "> <span >EMAIL: </span><span class="user-tag">{{uemail}}</span></div>
+        </div>
+        <a class="back-permission" href="/admin-accounts">Cancel</a>
         <input type="submit" value="Save">
       </nav>
 
@@ -176,17 +181,7 @@
             <h6>Menu</h6>
           </div>
           <div class="permission-chkbx">
-            <div class="chk-div">
-              <span>Read</span>
-              {% if datas.menu_read is True %}
-                <input type="checkbox" id="menu_read" name="menu_read" value={{ datas.menu_read }} checked
-                >
-              {% else %}
-                <input type="checkbox" id="menu_read" name="menu_read" value={{ datas.menu_read }}
-                >
-              {% endif %}
 
-            </div>
             <div class="chk-div">
               <span>Create</span>
               {% if datas.menu_create is True %}
@@ -205,16 +200,7 @@
             <h6>Inventory</h6>
           </div>
           <div class="permission-chkbx">
-            <div class="chk-div">
-              <span>Read</span>
-              {% if datas.inventory_read is True %}
-                <input type="checkbox" id="inventory_read" name="inventory_read" value={{ datas.inventory_read }} checked
-                >
-              {% else %}
-                <input type="checkbox" id="inventory_read" name="inventory_read" value={{ datas.inventory_read }}
-                >
-              {% endif %}
-            </div>
+
             <div class="chk-div">
               <span>Create</span>
               {% if datas.inventory_create is True %}
@@ -253,16 +239,7 @@
             <h6>Orders</h6>
           </div>
           <div class="permission-chkbx">
-            <div class="chk-div">
-              <span>Read</span>
-              {% if datas.orders_read is True %}
-                <input type="checkbox" id="orders_read" name="orders_read" value={{ datas.orders_read }} checked
-                >
-              {% else %}
-                <input type="checkbox" id="orders_read" name="orders_read" value={{ datas.orders_read }}
-                >
-              {% endif %}
-            </div>
+
             <div class="chk-div">
               <span>Update</span>
               {% if datas.orders_update is True %}
@@ -291,16 +268,7 @@
             <h6>Admins</h6>
           </div>
           <div class="permission-chkbx">
-            <div class="chk-div">
-              <span>Read</span>
-              {% if datas.admins_read is True %}
-                <input type="checkbox" id="admins_read" name="admins_read" value={{ datas.admins_read }} checked
-                >
-              {% else %}
-                <input type="checkbox" id="admins_read" name="admins_read" value={{ datas.admins_read }}
-                >
-              {% endif %}
-            </div>
+
             <div class="chk-div">
               <span>Create</span>
               {% if datas.admins_create is True %}
