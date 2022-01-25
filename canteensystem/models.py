@@ -28,17 +28,12 @@ class Orders(models.Model):
 
 class CustomUser(AbstractUser):
     menu_create = models.BooleanField(default=False)
-    menu_read = models.BooleanField(default=False)
     inventory_create = models.BooleanField(default=False)
-    inventory_read = models.BooleanField(default=False)
     inventory_update = models.BooleanField(default=False)
     inventory_delete = models.BooleanField(default=False)
-    orders_read = models.BooleanField(default=False)
     orders_update = models.BooleanField(default=False)
     orders_delete = models.BooleanField(default=False)
     admins_create = models.BooleanField(default=False)
-    admins_read = models.BooleanField(default=False)
     admins_update = models.BooleanField(default=False)
-    is_admins = models.BooleanField(default=False)
 
 
