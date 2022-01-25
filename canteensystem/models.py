@@ -27,6 +27,18 @@ class Orders(models.Model):
     item_status = CharField(max_length=30, verbose_name="item_status", blank=False)
 
 class CustomUser(AbstractUser):
-    is_customer = models.BooleanField(default=False)
+    menu_create = models.BooleanField(default=False)
+    menu_read = models.BooleanField(default=False)
+    inventory_create = models.BooleanField(default=False)
+    inventory_read = models.BooleanField(default=False)
+    inventory_update = models.BooleanField(default=False)
+    inventory_delete = models.BooleanField(default=False)
+    orders_read = models.BooleanField(default=False)
+    orders_update = models.BooleanField(default=False)
+    orders_delete = models.BooleanField(default=False)
+    admins_create = models.BooleanField(default=False)
+    admins_read = models.BooleanField(default=False)
+    admins_update = models.BooleanField(default=False)
     is_admins = models.BooleanField(default=False)
+
 
