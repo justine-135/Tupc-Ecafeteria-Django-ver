@@ -52,7 +52,7 @@ function indexFunc() {
   function clickCategories() {
     // show items when clicked
     for (let i = 0; i < selectBtn.length; i++) {
-      selectBtn.item(i).onclick = function () {
+      selectBtn[i].onclick = function () {
         cover.style.zIndex = "1";
         if (this.id === "btn-breakfast") {
           menuTitle.textContent = "Breakfast";
