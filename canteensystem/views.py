@@ -11,9 +11,6 @@ import re
 
 @login_required(login_url='login')
 def index(request):
-    if request.user.is_authenticated and request.user.is_customer:
-        return redirect('menu')
-
     form = Menu()
     datas = Menus.objects.all()
 
@@ -72,8 +69,6 @@ def menu(request):
 def inventory(request):
     if request.user.is_authenticated and request.user.is_admins:
         return redirect('index')
-    elif request.user.is_authenticated and request.user.is_customer:
-        return redirect('menu')
 
     name = request.user.email
 
@@ -85,14 +80,37 @@ def inventory(request):
 def admins(request):
     if request.user.is_authenticated and request.user.is_admins:
         return redirect('index')
-    elif request.user.is_authenticated and request.user.is_customer:
-        return redirect('menu')
-
     name = request.user.email
 
     users = CustomUser.objects.all()
     context = {'users': users, 'name': name}
     return render(request, 'users.html', context)
+
+@login_required(login_url='login')
+def permission(request, pk):
+    datas = CustomUser.objects.get(id=pk)
+    form = CreateAccount(instance=datas)
+
+    if request.method == 'POST':
+        datas.admins_create = request.POST.get('admins_create')
+        datas.admins_read = request.POST.get('admins_read')
+        datas.admins_update = request.POST.get('admins_update')
+        datas.orders_read = request.POST.get('orders_read')
+        datas.orders_update = request.POST.get('orders_update')
+        datas.orders_delete = request.POST.get('orders_delete')
+        datas.inventory_create = request.POST.get('inventory_create')
+        datas.inventory_read = request.POST.get('inventory_read')
+        datas.inventory_update = request.POST.get('inventory_update')
+        datas.inventory_delete = request.POST.get('nventory_delete')
+        datas.menu_create = request.POST.get('menu_create')
+        datas.menu_read = request.POST.get('menu_read')
+        datas.save()
+        return redirect('admin-accounts')
+
+    context = {'datas': datas}
+
+    return render(request, 'permissions.html/', context)
+
 
 @login_required(login_url='login')
 def updateFood(request, pk):
@@ -128,7 +146,6 @@ def cancelOrder(request, pk):
     if request.method == "POST":
         datas.item_status = "CANCELLED"
         datas.save()
-        print(datas)
         return redirect('inventory')
     context = {'item': datas}
 
@@ -141,7 +158,6 @@ def clearInventory(request):
         datas.delete()
         return redirect('inventory')
 
-    print(datas)
     context = {'item':datas}
 
     return render(request, 'clear-inventory.html', context)
@@ -158,11 +174,8 @@ def loginAccount(request):
             password = request.POST.get('password1')
 
             user = authenticate(request, username=username, password=password)
-            if user is not None and user.is_customer:
-                login(request, user)
-                return redirect('menu')
             
-            elif user is not None and user.is_staff:
+            if user is not None and user.is_staff:
                 login(request, user)
                 return redirect('index')
 
@@ -187,11 +200,9 @@ def createAccount(request):
             password = request.POST.get('password1')
             password2 = request.POST.get('password2')
             user = request.POST.get('username')
-            user_type = request.POST.get('user_type')
 
             min = 8
             regex = re.compile('[.@_!#$%^&*()<>?/\|}{~:]')
-            print(user_type)
 
             if form.is_valid():
                 if fname == '' or lname == '':
@@ -202,17 +213,9 @@ def createAccount(request):
 
                 else:
                     form.instance.is_staff = True
-                    if user_type == "customer":
-                        form.instance.is_customer = True
-                        form.save()
-                        messages.success(request, 'Registered Successfully')
-                        return redirect('login')
+                    form.save()
 
-                    if user_type == "admin":
-                        form.instance.is_admins = True
-                        form.save()
-                        messages.success(request, 'Registered Successfully')
-                        return redirect('login')
+                    return redirect('admin-accounts')
 
             else:
                 exist = CustomUser.objects.filter(username=user).exists()
