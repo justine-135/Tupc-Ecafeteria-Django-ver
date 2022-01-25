@@ -22,6 +22,7 @@ button:focus {
 }
 
 .head2 {
+  display: flex;
   margin-top: 20px;
   width: 100vw;
   animation: fromTop 1s;
@@ -162,15 +163,6 @@ button:focus {
     transform: translateX(0);
   }
 }
-.footer2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  background-color: transparent;
-  color: #efa536;
-  font-weight: bold;
-}
 
 .selected {
   background-color: #efa536;
@@ -292,7 +284,7 @@ h5 {
 }
 .head3 {
   background-image: linear-gradient(to right, #23272a, #35455d);
-  height: 100px;
+  height: 80px;
 }
 
 .inventory-status {
@@ -364,6 +356,11 @@ h5 {
 }
 .tb-inventory tr {
   text-align: center;
+}
+
+.tb-inventory tr td{
+  padding: 1rem;
+
 }
 
 .activate-reset a:focus {
@@ -468,6 +465,8 @@ img {
 .table-item tr {
   text-align: center;
 }
+
+
 .img-input {
   width: 100px;
   height: 70px;
@@ -644,6 +643,19 @@ img {
   background-color: rgb(255, 59, 59);
 }
 
+.edit-btn a:first-child:hover {
+  text-decoration: none;
+  color: white;
+}
+
+
+.edit-btn a:last-child:hover {
+  text-decoration: none;
+  color: white;
+
+}
+
+
 .delete-footer {
   width: 100%;
   height: 8vh;
@@ -670,11 +682,18 @@ img {
 }
 
 .change2 {
-  padding: 0.2rem;
-  background-color: rgb(255, 59, 59);
+  padding: 0.5rem;
+  background-color: #e73748;
   color: white;
   border-radius: 5px;
   border: none;
+  transition: 100ms ease;
+}
+
+.change2:hover{
+  text-decoration: none;
+    color: white;
+    background-color: #db3445;
 }
 
 .accounts-page {
@@ -725,7 +744,7 @@ img {
 .django-form input[type="number"],
 .django-form select {
   padding: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   border-radius: 3px;
   border: none;
   background-color: white;
@@ -801,7 +820,7 @@ img {
   align-items: center;
 }
 
-.user-nav input[type="submit"], .user-nav a {
+.user-nav input[type="submit"], .user-nav .add-account {
   font-size: 1rem;
   background-color: rgb(47, 47, 155);
   color: white;
@@ -812,20 +831,42 @@ img {
   transition: 100ms ease;
 }
 
+.user-nav input[type="submit"]{
+  margin-left: 5px;
+}
+
 .user-nav input[type="submit"]:hover{
   text-decoration: none;
   background-color: white;
   color: rgb(47, 47, 155);
 }
 
-.user-nav a:hover{
+.user-nav .add-account:hover{
   text-decoration: none;
   background-color: white;
   color: rgb(47, 47, 155);
 }
 
 .user-nav h6 {
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+.back-permission{
+  font-size: 1rem;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: auto;
+  transition: 100ms ease;
+  margin-left: auto;
+  background-color: rgb(255, 59, 59);
+  border: 1px solid rgb(255, 59, 59);
+
+}
+.back-permission:hover{
+  text-decoration: none;
+  background-color: white;
+  color: rgb(255, 59, 59);
 }
 
 .reg-back{
@@ -857,7 +898,7 @@ img {
   width: 22%;
   height: 300px;
   border-radius: 5px;
-  box-shadow: 0px 5px 20px 1px rgba(0, 0, 0, 0.253);
+  box-shadow: 0px 5px 15px 1px rgba(0, 0, 0, 0.116);
 }
 
 .permission-wrapper > div .permission-head{
@@ -879,4 +920,13 @@ img {
   justify-content: space-between;
   width: 100%;
   padding: 5px 0;
+}
+
+.user-tag{
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.flname{
+  text-transform: capitalize;
 }
