@@ -7,7 +7,7 @@ urlpatterns = [
     # map views to urls
     path('', views.index, name='index'),
     path('menu/', views.menu, name='menu'),
-    path('inventory/', views.inventory, name='inventory'),
+    path('orders/', views.inventory, name='inventory'),
     path('admin-accounts/', views.admins, name='admin-accounts'),
     path('permissions/<str:pk>', views.permission, name='permissions'),
     path('update/<str:pk>/', views.updateFood, name='update'),
