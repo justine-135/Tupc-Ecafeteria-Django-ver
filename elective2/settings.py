@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,7 +57,7 @@ ROOT_URLCONF = 'elective2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r"C:\Users\louis\Documents\TUPC E-Cafe Django\Tupc-Ecafeteria-Django-ver\canteensystem\templates"],
+        'DIRS': [r"C:\Users\TOSHIBA\Desktop\Dev\Python\Django\elective2\canteensystem\templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

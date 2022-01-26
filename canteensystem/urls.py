@@ -2,6 +2,8 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from django.views.static import serve
+from django.conf.urls import url
 
 urlpatterns = [
     # map views to urls
@@ -16,6 +18,10 @@ urlpatterns = [
     path('clear-inventory/', views.clearInventory, name='clear-inventory'),
     path('registration/', views.createAccount, name ='registration'),
     path('login/', views.loginAccount, name ='login'),
-    path('logout/', views.logoutAccount, name ='logout')
+    path('logout/', views.logoutAccount, name ='logout'),
+
+    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
