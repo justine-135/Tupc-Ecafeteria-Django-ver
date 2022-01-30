@@ -28,7 +28,6 @@ DEBUG = False
 # ALLOWED_HOSTS = ['127.0.0.1'] old
 ALLOWED_HOSTS = ['tupcecafeteria.pythonanywhere.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
