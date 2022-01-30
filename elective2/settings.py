@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-5#+*2ngsfjbaw+i=gnisa88$80@ci9&mzp=lc8k%mpx*b@z#_l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+# ALLOWED_HOSTS = ['127.0.0.1'] old
+ALLOWED_HOSTS = ['tupcecafeteria.pythonanywhere.com']
 
 
 # Application definition
@@ -54,6 +55,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'elective2.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -76,16 +79,25 @@ WSGI_APPLICATION = 'elective2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'elective2_django',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'elective2_django',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'tupcecafeteria$mysqltupcecafe',
+        'USER': 'tupcecafeteria',
+        'PASSWORD': 'upanoasparinyagi',
+        'HOST': 'tupcecafeteria.mysql.pythonanywhere-services.com',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
