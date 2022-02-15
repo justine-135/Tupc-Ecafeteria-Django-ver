@@ -356,10 +356,17 @@ h5 {
 }
 .tb-inventory tr {
   text-align: center;
+  height: auto;
 }
 
 .tb-inventory tr td{
   padding: 1rem;
+
+}
+
+.td-item-name{
+  max-width: 250px;
+  min-width: 200px;
 
 }
 
@@ -694,6 +701,21 @@ img {
   text-decoration: none;
     color: white;
     background-color: #db3445;
+}
+
+.change3 {
+  padding: 0.5rem;
+  background-color: rgb(47, 47, 155);
+  color: white;
+  border-radius: 5px;
+  border: none;
+  transition: 100ms ease;
+}
+
+.change3:hover{
+  text-decoration: none;
+    color: white;
+    background-color: rgb(35, 30, 107);
 }
 
 .accounts-page {
