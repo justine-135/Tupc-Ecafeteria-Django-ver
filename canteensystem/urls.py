@@ -15,6 +15,8 @@ urlpatterns = [
     path('update/<str:pk>/', views.updateFood, name='update'),
     path('delete/<str:pk>/', views.deleteFood, name='delete'),
     path('cancel/<str:pk>/', views.cancelOrder, name='cancel-order'),
+    path('approve/<str:pk>/', views.approveOrder, name='approve-order'),
+
     path('clear-inventory/', views.clearInventory, name='clear-inventory'),
     path('registration/', views.createAccount, name ='registration'),
     path('login/', views.loginAccount, name ='login'),
