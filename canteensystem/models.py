@@ -22,7 +22,7 @@ class Menus(models.Model):
 
 class Orders(models.Model):
     time = CharField(max_length=100, verbose_name='time', blank=False)
-    item = CharField(max_length=30, verbose_name="item", blank=False)
+    item = CharField(max_length=3000, verbose_name="item", blank=False)
     total_purchase = CharField(max_length=5, verbose_name="total_purchase", blank=False)
     item_status = CharField(max_length=30, verbose_name="item_status", blank=False)
 
