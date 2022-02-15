@@ -1,4 +1,6 @@
 # from django.conf.urls import url
+from cmath import atan
+from webbrowser import get
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .form import Menu, CreateAccount
@@ -45,16 +47,18 @@ def menu(request):
             addons = Menus.objects.filter(item_categories="addons")
             breakfast = Menus.objects.filter(item_categories="breakfast")
             lunchmeals = Menus.objects.filter(item_categories="lunchmeal")
+            # getId = Menus.objects.get(id)
             name = request.user.email
 
             context = {'drinks': drinks, 'addons': addons, 'breakfast': breakfast, 'lunchmeals': lunchmeals, 'name': name, 'media_url':settings.MEDIA_URL}
 
             if request.method == 'POST':
                 foods = []
-
                 for key, values in request.POST.lists():
                     if key == 'foods':
                         foods.append(values)
+                    
+                print(foods)
                 total = request.POST.get("total-purchase")
 
                 for food in foods:
@@ -62,14 +66,14 @@ def menu(request):
                     form.save()
                     
                 form.time = request.POST.get("hour")
-                form.item_status = 'SUCCESS'
+                form.item_status = 'PENDING'
                 form.total_purchase = total
                 form.save()
 
             return render(request, 'menu.html', context)
 
         else:
-            return redirect('index')
+            return redirect('index')    
 
 @login_required(login_url='login')
 def inventory(request):
@@ -133,6 +137,8 @@ def updateFood(request, pk):
             datas = Menus.objects.get(id=pk)
             form = Menu(instance=datas)
             name = request.user.email
+            print("datas: ",datas.item_quantity)
+
 
             drinks = Menus.objects.filter(item_categories="drinks")
             addons = Menus.objects.filter(item_categories="addons")
@@ -180,6 +186,21 @@ def cancelOrder(request, pk):
         return render(request, 'cancel-order.html/', context)
 
 @login_required(login_url='login')
+def approveOrder(request, pk):
+    if request.user.is_authenticated:
+        if request.user.is_superuser or request.user.orders_update:
+            datas = Orders.objects.get(id=pk)
+            if request.method == "POST":
+                datas.item_status = "SUCCESS"
+                datas.save()
+                return redirect('inventory')
+        else:
+            return redirect('/orders')
+
+        context = {'item': datas}
+        return render(request, 'approve-order.html/', context)
+
+@login_required(login_url='login')
 def clearInventory(request):
     if request.user.is_authenticated:
         if request.user.is_superuser or request.user.orders_delete:
@@ -220,7 +241,7 @@ def loginAccount(request):
 @login_required(login_url='login')
 def createAccount(request):
     if request.user.is_authenticated:
-        if request.user.is_superuser or request.user.is_admins_create:
+        if request.user.is_superuser or request.user.admins_create:
             form = CreateAccount()
             if request.method == "POST":
                 form = CreateAccount(request.POST)
