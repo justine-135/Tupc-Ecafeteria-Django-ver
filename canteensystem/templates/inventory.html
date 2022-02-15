@@ -237,10 +237,13 @@
         <tr>
           <td>{{ order.id}}</td>
           <td>{{ order.time }}</td>
-          <td>{{ order.item }}</td>
+          <td class="td-item-name">{{ order.item }}</td>
           <td>{{ order.total_purchase }}</td>
           <td>{{ order.item_status }}</td>
           <td>
+            <a class="change3" href="{% url 'approve-order' order.id %}"
+              >Approve</a
+            >
             <a class="change2" href="{% url 'cancel-order' order.id %}"
               >Cancel</a
             >
