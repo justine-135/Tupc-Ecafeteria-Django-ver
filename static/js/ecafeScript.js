@@ -100,7 +100,9 @@ function indexFunc() {
     let getName = thisItem.getAttribute("name");
     let getPrice = thisItem.getAttribute("value2");
     let getQuantity = thisItem.getAttribute("value");
-    addToCart(getName, getPrice, getQuantity);
+    let getId = thisItem.getAttribute("value3");
+    let getImg = thisItem.getAttribute("src")
+    addToCart(getName, getPrice, getQuantity, getId, getImg);
     deleteRow();
   }
 
@@ -141,7 +143,7 @@ function indexFunc() {
     deleteRow();
   }
 
-  function addToCart(itemName, itemPrice, itemQuantity) {
+  function addToCart(itemName, itemPrice, itemQuantity, itemId, itemImg) {
     // add item to orders
     let eachItemName = document.getElementsByClassName("name-par");
     let createDiv = document.createElement("div");
@@ -158,6 +160,9 @@ function indexFunc() {
       <input type="textbox" class="name-par pl-1 col-5 col-xl-4" value='${itemName}' name="foods" readonly>
       <input type="textbox" class="pricing col-3 col-xl-3" value="${itemPrice}" name="prices" readonly>
       <input class="quantity-element col-2 col-xl-3" type="number" min="1" max="${itemQuantity}" value="1" name="quantity">
+      <input class="quantity-element col-2 col-xl-3" type="number" value="${itemId}" name="id" readonly hidden>
+      <input class="quantity-element col-2 col-xl-3" type="number" value="${itemImg}" name="img" readonly hidden>
+
       <button class="del col-2 col-xl-1 material-icons" id="id-delete" type="button">clear</button>
     </div>
     `;
@@ -473,13 +478,12 @@ function inventoryFunc() {
   let indexSales = 0;
   let successSales = 0;
   let cancelSales = 0;
-  let checkBtn = document.getElementsByClassName("change");
+  let checkBtn = document.getElementsByClassName("change3");
   let banBtn = document.getElementsByClassName("change2");
   let salesValue = document.getElementById("id-sales-value");
   let successValue = document.getElementById("id-success-value");
   let cancelValue = document.getElementById("id-cancel-value");
   let table = document.getElementById("tbl-inventory");
-  let clearTable = document.getElementById("reset-btn");
   let inventory = document.getElementById("inventory-body");
 
   inventory.addEventListener("mouseover", () => {
@@ -501,21 +505,40 @@ function inventoryFunc() {
     // change text color, update no. of sales, success, and cancel
     if (tablerows2.childNodes[9].textContent === "SUCCESS") {
       tablerows2.childNodes[9].style.color = "#1261A0";
+      tablerows2.childNodes[9].style.fontWeight = "700";
+
       indexSales = indexSales + parseInt(tableCellPrice);
       salesValue.textContent = "P " + indexSales;
       successSales++;
       successValue.textContent = successSales;
     } else if (tablerows2.childNodes[9].textContent === "CANCELLED") {
+      tablerows2.childNodes[9].style.fontWeight = "700";
       tablerows2.childNodes[9].style.color = "#e12120";
       cancelSales++;
       cancelValue.textContent = cancelSales;
+    }
+    else{
+      tablerows2.childNodes[9].style.fontWeight = "700";
+      tablerows2.childNodes[9].style.color = "rgb(255, 196, 0)";
+
+
     }
   }
 
   for (let i = 0; i < banBtn.length; i++) {
     banBtn[i].addEventListener("click", (e) => {
       if (
-        banBtn[i].parentNode.parentNode.childNodes[9].textContent != "SUCCESS"
+        banBtn[i].parentNode.parentNode.childNodes[9].textContent == "CANCELLED" || banBtn[i].parentNode.parentNode.childNodes[9].textContent == "SUCCESS"
+      ) {
+        e.preventDefault();
+      }
+    });
+  }
+
+  for (let i = 0; i < checkBtn.length; i++) {
+    checkBtn[i].addEventListener("click", (e) => {
+      if (
+        banBtn[i].parentNode.parentNode.childNodes[9].textContent == "CANCELLED" || banBtn[i].parentNode.parentNode.childNodes[9].textContent == "SUCCESS"
       ) {
         e.preventDefault();
       }
